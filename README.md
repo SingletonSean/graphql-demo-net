@@ -14,3 +14,4 @@ The following links go to the state of this repository after the corresponding e
 ## Client
 
 - [Part 1](https://github.com/SingletonSean/graphql-demo-net/tree/client/ep-1)
+- [Part 2](https://github.com/SingletonSean/graphql-demo-net/tree/client/ep-2)

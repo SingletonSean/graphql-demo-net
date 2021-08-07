@@ -3,5 +3,37 @@
 }
 
 type Query {
-  instructions: String
+  courses: [CourseType]
+  courseById(id: Uuid!): CourseType
+  instructions: String @deprecated(reason: "This query is deprecated.")
+}
+
+type CourseType {
+  id: Uuid!
+  name: String
+  subject: Subject!
+  instructor: InstructorType!
+  students: [StudentType]
+}
+
+scalar Uuid
+
+enum Subject {
+  MATHEMATICS
+  SCIENCE
+  HISTORY
+}
+
+type InstructorType {
+  id: Uuid!
+  firstName: String
+  lastName: String
+  salary: Float!
+}
+
+type StudentType {
+  gpa: Float!
+  id: Uuid!
+  firstName: String
+  lastName: String
 }

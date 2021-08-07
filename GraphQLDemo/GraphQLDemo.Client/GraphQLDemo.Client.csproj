@@ -6,13 +6,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <GraphQL Remove="GetCourseById.graphql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Queries\CourseByIdQuery.graphql" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
     <PackageReference Include="StrawberryShake.CodeGeneration.CSharp.Analyzers" Version="11.3.2" />
     <PackageReference Include="StrawberryShake.Transport.Http" Version="11.3.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Queries\" />
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

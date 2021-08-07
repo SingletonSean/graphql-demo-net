@@ -1,0 +1,11 @@
+﻿query GetCourses {
+    courses {
+        name
+        instructor {
+            firstName
+        }
+        students {
+            id
+        }
+    }
+}

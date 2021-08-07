@@ -1,36 +1,78 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using StrawberryShake;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace GraphQLDemo.Client
 {
     class Program
     {
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
-            IServiceCollection serviceCollection = new ServiceCollection();
+            Host.CreateDefaultBuilder(args)
+                .ConfigureServices((context, services) =>
+                {
+                    string graphqlApiUrl = context.Configuration.GetValue<string>("GRAPHQL_API_URL");
 
-            serviceCollection
-                .AddGraphQLDemoClient()
-                .ConfigureHttpClient(c => c.BaseAddress = new Uri("http://localhost:5000/graphql"));
+                    services
+                        .AddGraphQLDemoClient()
+                        .ConfigureHttpClient(c => c.BaseAddress = new Uri(graphqlApiUrl));
 
-            IServiceProvider serviceProvider = serviceCollection.BuildServiceProvider();
+                    services.AddHostedService<Startup>();
+                })
+                .Build()
+                .Run();
+        }
+    }
 
-            IGraphQLDemoClient client = serviceProvider.GetRequiredService<IGraphQLDemoClient>();
+    public class Startup : IHostedService
+    {
+        private readonly IGraphQLDemoClient _client;
 
-            IOperationResult<IGetInstructionsResult> result = await client.GetInstructions.ExecuteAsync();
+        public Startup(IGraphQLDemoClient client)
+        {
+            _client = client;
+        }
+
+        public async Task StartAsync(CancellationToken cancellationToken)
+        {
+            IOperationResult<IGetCoursesResult> result = await _client.GetCourses.ExecuteAsync();
 
             if (result.IsErrorResult())
             {
-                Console.WriteLine("Failed to get instructions");
+                Console.WriteLine("Failed to get courses.");
             }
             else
             {
-                Console.WriteLine(result.Data?.Instructions);
+                foreach (IGetCourses_Courses course in result.Data?.Courses)
+                {
+                    Console.WriteLine($"{course.Name} is taught by {course.Instructor.FirstName} and has {course.Students.Count} students.");
+                }
+            }
+
+            Console.WriteLine();
+
+            IOperationResult<IGetCourseByIdResult> courseByIdResult = await _client.GetCourseById.ExecuteAsync(Guid.NewGuid());
+
+            if (result.IsErrorResult())
+            {
+                Console.WriteLine("Failed to get course.");
+            }
+            else
+            {
+                IGetCourseById_CourseById course = courseByIdResult.Data?.CourseById;
+                Console.WriteLine($"{course.Name} is taught by {course.Instructor.FirstName} and has {course.Students.Count} students.");
             }
 
             Console.ReadKey();
+        }
+
+        public Task StopAsync(CancellationToken cancellationToken)
+        {
+            return Task.CompletedTask;
         }
     }
 }
