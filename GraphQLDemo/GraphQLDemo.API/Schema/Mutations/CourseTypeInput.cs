@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphQLDemo.API.Schema.Mutations
 {
-    public class CourseInputType
+    public class CourseTypeInput
     {
         public string Name { get; set; }
         public Subject Subject { get; set; }

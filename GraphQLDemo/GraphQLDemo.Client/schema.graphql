@@ -1,5 +1,6 @@
 ﻿schema {
   query: Query
+  mutation: Mutation
 }
 
 type Query {
@@ -7,6 +8,14 @@ type Query {
   courseById(id: Uuid!): CourseType
   instructions: String @deprecated(reason: "This query is deprecated.")
 }
+
+type Mutation {
+  createCourse(courseInput: CourseTypeInput): CourseResult
+  updateCourse(id: Uuid! courseInput: CourseTypeInput): CourseResult
+  deleteCourse(id: Uuid!): Boolean!
+}
+
+scalar Uuid
 
 type CourseType {
   id: Uuid!
@@ -16,12 +25,24 @@ type CourseType {
   students: [StudentType]
 }
 
-scalar Uuid
+type CourseResult {
+  id: Uuid!
+  name: String
+  subject: Subject!
+  instructorId: Uuid!
+}
 
-enum Subject {
-  MATHEMATICS
-  SCIENCE
-  HISTORY
+input CourseTypeInput {
+  name: String
+  subject: Subject!
+  instructorId: Uuid!
+}
+
+type StudentType {
+  id: Uuid!
+  firstName: String
+  lastName: String
+  gpa: Float!
 }
 
 type InstructorType {
@@ -31,9 +52,8 @@ type InstructorType {
   salary: Float!
 }
 
-type StudentType {
-  gpa: Float!
-  id: Uuid!
-  firstName: String
-  lastName: String
+enum Subject {
+  MATHEMATICS
+  SCIENCE
+  HISTORY
 }

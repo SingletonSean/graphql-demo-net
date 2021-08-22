@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using StrawberryShake;
 using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -65,6 +66,48 @@ namespace GraphQLDemo.Client
             {
                 IGetCourseById_CourseById course = courseByIdResult.Data?.CourseById;
                 Console.WriteLine($"{course.Name} is taught by {course.Instructor.FirstName} and has {course.Students.Count} students.");
+            }
+
+            IOperationResult<ICreateCourseResult> createCourseResult = await _client.CreateCourse.ExecuteAsync(new CourseTypeInput()
+            {
+                Name = "GraphQL 101",
+                Subject = Subject.Science,
+                InstructorId = Guid.NewGuid()
+            });
+            Guid courseId = createCourseResult.Data.CreateCourse.Id;
+            string createdCourseName = createCourseResult.Data.CreateCourse.Name;
+            Console.WriteLine($"Successfully created course {createdCourseName}.");
+
+            IOperationResult<IUpdateCourseResult> updateCourseResult = await _client.UpdateCourse.ExecuteAsync(courseId, new CourseTypeInput()
+            {
+                Name = "GraphQL 102",
+                Subject = Subject.Science,
+                InstructorId = Guid.NewGuid()
+            });
+
+            if(updateCourseResult.IsErrorResult())
+            {
+                IClientError error = updateCourseResult.Errors.First();
+                if(error.Code == "COURSE_NOT_FOUND")
+                {
+                    Console.WriteLine("Course was not found.");
+                }
+                else
+                {
+                    Console.WriteLine("Unknown course update error.");
+                }
+            }
+            else
+            {
+                string updatedCourseName = updateCourseResult.Data.UpdateCourse.Name;
+                Console.WriteLine($"Successfully updated course to {updatedCourseName}.");
+            }
+
+            IOperationResult<IDeleteCourseResult> deleteCourseResult = await _client.DeleteCourse.ExecuteAsync(courseId);
+            bool deleteCourseSuccessful = deleteCourseResult.Data.DeleteCourse;
+            if(deleteCourseSuccessful)
+            {
+                Console.WriteLine("Successfully deleted course.");
             }
 
             Console.ReadKey();

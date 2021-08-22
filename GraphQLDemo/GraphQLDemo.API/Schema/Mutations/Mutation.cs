@@ -16,7 +16,7 @@ namespace GraphQLDemo.API.Schema.Mutations
             _courses = new List<CourseResult>();
         }
 
-        public CourseResult CreateCourse(CourseInputType courseInput)
+        public CourseResult CreateCourse(CourseTypeInput courseInput)
         {
             CourseResult courseType = new CourseResult()
             {
@@ -31,7 +31,7 @@ namespace GraphQLDemo.API.Schema.Mutations
             return courseType;
         }
 
-        public CourseResult UpdateCourse(Guid id, CourseInputType courseInput)
+        public CourseResult UpdateCourse(Guid id, CourseTypeInput courseInput)
         {
             CourseResult course = _courses.FirstOrDefault(c => c.Id == id);
 

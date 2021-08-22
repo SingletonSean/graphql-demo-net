@@ -1,0 +1,3 @@
+﻿mutation DeleteCourse($id: Uuid!) {
+	deleteCourse(id: $id)
+}
