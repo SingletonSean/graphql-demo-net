@@ -1,6 +1,7 @@
 using GraphQLDemo.API.Schema;
 using GraphQLDemo.API.Schema.Mutations;
 using GraphQLDemo.API.Schema.Queries;
+using GraphQLDemo.API.Schema.Subscriptions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -19,7 +20,10 @@ namespace GraphQLDemo.API
         {
             services.AddGraphQLServer()
                 .AddQueryType<Query>()
-                .AddMutationType<Mutation>();
+                .AddMutationType<Mutation>()
+                .AddSubscriptionType<Subscription>();
+
+            services.AddInMemorySubscriptions();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -30,6 +34,8 @@ namespace GraphQLDemo.API
             }
 
             app.UseRouting();
+
+            app.UseWebSockets();
 
             app.UseEndpoints(endpoints =>
             {
