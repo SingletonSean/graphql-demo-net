@@ -7,8 +7,6 @@
 
   <ItemGroup>
     <GraphQL Remove="GetCourseById.graphql" />
-    <GraphQL Remove="Subscriptions\CourseCreatedSubscription.graphql" />
-    <GraphQL Remove="Subscriptions\CourseUpdatedSubscription.graphql" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,11 +30,7 @@
 
   <ItemGroup>
     <Folder Include="Mutations\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="CourseCreatedSubscription.graphql" />
-    <None Include="CourseUpdatedSubscription.graphql" />
+    <Folder Include="Subscriptions\" />
   </ItemGroup>
 
 </Project>
