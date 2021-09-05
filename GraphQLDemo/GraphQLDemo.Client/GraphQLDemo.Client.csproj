@@ -7,6 +7,8 @@
 
   <ItemGroup>
     <GraphQL Remove="GetCourseById.graphql" />
+    <GraphQL Remove="Subscriptions\CourseCreatedSubscription.graphql" />
+    <GraphQL Remove="Subscriptions\CourseUpdatedSubscription.graphql" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,6 +20,8 @@
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
     <PackageReference Include="StrawberryShake.CodeGeneration.CSharp.Analyzers" Version="11.3.2" />
     <PackageReference Include="StrawberryShake.Transport.Http" Version="11.3.2" />
+    <PackageReference Include="StrawberryShake.Transport.WebSockets" Version="11.3.6" />
+    <PackageReference Include="System.Reactive" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +32,11 @@
 
   <ItemGroup>
     <Folder Include="Mutations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="CourseCreatedSubscription.graphql" />
+    <None Include="CourseUpdatedSubscription.graphql" />
   </ItemGroup>
 
 </Project>

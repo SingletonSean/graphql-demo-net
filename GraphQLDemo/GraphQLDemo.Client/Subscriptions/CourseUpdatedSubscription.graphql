@@ -1,0 +1,7 @@
+﻿subscription CourseUpdated($courseId: Uuid!) {
+	courseUpdated(courseId: $courseId) {
+		id
+		name
+		subject
+	}
+}

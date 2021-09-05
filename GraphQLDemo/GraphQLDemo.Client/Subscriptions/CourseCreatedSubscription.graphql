@@ -1,0 +1,7 @@
+﻿subscription CourseCreated {
+	courseCreated {
+		id
+		name
+		subject
+	}
+}

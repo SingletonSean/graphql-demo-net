@@ -1,6 +1,7 @@
 ﻿schema {
   query: Query
   mutation: Mutation
+  subscription: Subscription
 }
 
 type Query {
@@ -15,6 +16,18 @@ type Mutation {
   deleteCourse(id: Uuid!): Boolean!
 }
 
+type Subscription {
+  courseCreated: CourseResult
+  courseUpdated(courseId: Uuid!): CourseResult
+}
+
+type CourseResult {
+  id: Uuid!
+  name: String
+  subject: Subject!
+  instructorId: Uuid!
+}
+
 scalar Uuid
 
 type CourseType {
@@ -23,13 +36,6 @@ type CourseType {
   subject: Subject!
   instructor: InstructorType!
   students: [StudentType]
-}
-
-type CourseResult {
-  id: Uuid!
-  name: String
-  subject: Subject!
-  instructorId: Uuid!
 }
 
 input CourseTypeInput {

@@ -18,9 +18,13 @@ namespace GraphQLDemo.Client
                 {
                     string graphqlApiUrl = context.Configuration.GetValue<string>("GRAPHQL_API_URL");
 
+                    string httpGraphQLApiUrl = $"http://{graphqlApiUrl}";
+                    string webSocketsGraphQLApiUrl = $"ws://{graphqlApiUrl}";
+
                     services
                         .AddGraphQLDemoClient()
-                        .ConfigureHttpClient(c => c.BaseAddress = new Uri(graphqlApiUrl));
+                        .ConfigureHttpClient(c => c.BaseAddress = new Uri(httpGraphQLApiUrl))
+                        .ConfigureWebSocketClient(c => c.Uri = new Uri(webSocketsGraphQLApiUrl));
 
                     services.AddHostedService<Startup>();
                 })
@@ -103,12 +107,24 @@ namespace GraphQLDemo.Client
                 Console.WriteLine($"Successfully updated course to {updatedCourseName}.");
             }
 
-            IOperationResult<IDeleteCourseResult> deleteCourseResult = await _client.DeleteCourse.ExecuteAsync(courseId);
-            bool deleteCourseSuccessful = deleteCourseResult.Data.DeleteCourse;
-            if(deleteCourseSuccessful)
+            //IOperationResult<IDeleteCourseResult> deleteCourseResult = await _client.DeleteCourse.ExecuteAsync(courseId);
+            //bool deleteCourseSuccessful = deleteCourseResult.Data.DeleteCourse;
+            //if(deleteCourseSuccessful)
+            //{
+            //    Console.WriteLine("Successfully deleted course.");
+            //}
+
+            _client.CourseCreated.Watch().Subscribe(result => 
             {
-                Console.WriteLine("Successfully deleted course.");
-            }
+                string name = result.Data.CourseCreated.Name;
+                Console.WriteLine($"Course {name} was created.");
+            });
+
+            _client.CourseUpdated.Watch(courseId).Subscribe(result =>
+            {
+                string name = result.Data.CourseUpdated.Name;
+                Console.WriteLine($"Course {courseId} was renamed to {name}.");
+            });
 
             Console.ReadKey();
         }

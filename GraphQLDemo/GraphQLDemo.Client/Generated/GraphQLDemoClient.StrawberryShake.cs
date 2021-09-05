@@ -4,6 +4,324 @@
 namespace GraphQLDemo.Client
 {
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class CourseCreatedResult : global::System.IEquatable<CourseCreatedResult>, ICourseCreatedResult
+    {
+        public CourseCreatedResult(global::GraphQLDemo.Client.ICourseCreated_CourseCreated? courseCreated)
+        {
+            CourseCreated = courseCreated;
+        }
+
+        public global::GraphQLDemo.Client.ICourseCreated_CourseCreated? CourseCreated { get; }
+
+        public virtual global::System.Boolean Equals(CourseCreatedResult? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((CourseCreated is null && other.CourseCreated is null) || CourseCreated != null && CourseCreated.Equals(other.CourseCreated)));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((CourseCreatedResult)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (CourseCreated != null)
+                {
+                    hash ^= 397 * CourseCreated.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class CourseCreated_CourseCreated_CourseResult : global::System.IEquatable<CourseCreated_CourseCreated_CourseResult>, ICourseCreated_CourseCreated_CourseResult
+    {
+        public CourseCreated_CourseCreated_CourseResult(global::System.Guid id, global::System.String? name, global::GraphQLDemo.Client.Subject subject)
+        {
+            Id = id;
+            Name = name;
+            Subject = subject;
+        }
+
+        public global::System.Guid Id { get; }
+
+        public global::System.String? Name { get; }
+
+        public global::GraphQLDemo.Client.Subject Subject { get; }
+
+        public virtual global::System.Boolean Equals(CourseCreated_CourseCreated_CourseResult? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Id.Equals(other.Id)) && ((Name is null && other.Name is null) || Name != null && Name.Equals(other.Name)) && Subject.Equals(other.Subject);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((CourseCreated_CourseCreated_CourseResult)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Id.GetHashCode();
+                if (Name != null)
+                {
+                    hash ^= 397 * Name.GetHashCode();
+                }
+
+                hash ^= 397 * Subject.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public interface ICourseCreatedResult
+    {
+        public global::GraphQLDemo.Client.ICourseCreated_CourseCreated? CourseCreated { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public interface ICourseCreated_CourseCreated
+    {
+        public global::System.Guid Id { get; }
+
+        public global::System.String? Name { get; }
+
+        public global::GraphQLDemo.Client.Subject Subject { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public interface ICourseCreated_CourseCreated_CourseResult : ICourseCreated_CourseCreated
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class CourseUpdatedResult : global::System.IEquatable<CourseUpdatedResult>, ICourseUpdatedResult
+    {
+        public CourseUpdatedResult(global::GraphQLDemo.Client.ICourseUpdated_CourseUpdated? courseUpdated)
+        {
+            CourseUpdated = courseUpdated;
+        }
+
+        public global::GraphQLDemo.Client.ICourseUpdated_CourseUpdated? CourseUpdated { get; }
+
+        public virtual global::System.Boolean Equals(CourseUpdatedResult? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((CourseUpdated is null && other.CourseUpdated is null) || CourseUpdated != null && CourseUpdated.Equals(other.CourseUpdated)));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((CourseUpdatedResult)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (CourseUpdated != null)
+                {
+                    hash ^= 397 * CourseUpdated.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class CourseUpdated_CourseUpdated_CourseResult : global::System.IEquatable<CourseUpdated_CourseUpdated_CourseResult>, ICourseUpdated_CourseUpdated_CourseResult
+    {
+        public CourseUpdated_CourseUpdated_CourseResult(global::System.Guid id, global::System.String? name, global::GraphQLDemo.Client.Subject subject)
+        {
+            Id = id;
+            Name = name;
+            Subject = subject;
+        }
+
+        public global::System.Guid Id { get; }
+
+        public global::System.String? Name { get; }
+
+        public global::GraphQLDemo.Client.Subject Subject { get; }
+
+        public virtual global::System.Boolean Equals(CourseUpdated_CourseUpdated_CourseResult? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Id.Equals(other.Id)) && ((Name is null && other.Name is null) || Name != null && Name.Equals(other.Name)) && Subject.Equals(other.Subject);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((CourseUpdated_CourseUpdated_CourseResult)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Id.GetHashCode();
+                if (Name != null)
+                {
+                    hash ^= 397 * Name.GetHashCode();
+                }
+
+                hash ^= 397 * Subject.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public interface ICourseUpdatedResult
+    {
+        public global::GraphQLDemo.Client.ICourseUpdated_CourseUpdated? CourseUpdated { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public interface ICourseUpdated_CourseUpdated
+    {
+        public global::System.Guid Id { get; }
+
+        public global::System.String? Name { get; }
+
+        public global::GraphQLDemo.Client.Subject Subject { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public interface ICourseUpdated_CourseUpdated_CourseResult : ICourseUpdated_CourseUpdated
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
     public partial class CreateCourseResult : global::System.IEquatable<CreateCourseResult>, ICreateCourseResult
     {
         public CreateCourseResult(global::GraphQLDemo.Client.ICreateCourse_CreateCourse? createCourse)
@@ -1307,6 +1625,229 @@ namespace GraphQLDemo.Client
     }
 
     /// <summary>
+    /// Represents the operation service of the CourseCreated GraphQL operation
+    /// <code>
+    /// subscription CourseCreated {
+    ///   courseCreated {
+    ///     __typename
+    ///     id
+    ///     name
+    ///     subject
+    ///     ... on CourseResult {
+    ///       id
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class CourseCreatedSubscriptionDocument : global::StrawberryShake.IDocument
+    {
+        private CourseCreatedSubscriptionDocument()
+        {
+        }
+
+        public static CourseCreatedSubscriptionDocument Instance { get; } = new CourseCreatedSubscriptionDocument();
+        public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Subscription;
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x73, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x43, 0x6f, 0x75, 0x72, 0x73, 0x65, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x20, 0x7b, 0x20, 0x63, 0x6f, 0x75, 0x72, 0x73, 0x65, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x69, 0x64, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x73, 0x75, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x43, 0x6f, 0x75, 0x72, 0x73, 0x65, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "84cea8b4beaaab4cacd48a60651a498f");
+        public override global::System.String ToString()
+        {
+#if NETSTANDARD2_0
+        return global::System.Text.Encoding.UTF8.GetString(Body.ToArray());
+#else
+            return global::System.Text.Encoding.UTF8.GetString(Body);
+#endif
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the CourseCreated GraphQL operation
+    /// <code>
+    /// subscription CourseCreated {
+    ///   courseCreated {
+    ///     __typename
+    ///     id
+    ///     name
+    ///     subject
+    ///     ... on CourseResult {
+    ///       id
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class CourseCreatedSubscription : global::GraphQLDemo.Client.ICourseCreatedSubscription
+    {
+        private readonly global::StrawberryShake.IOperationExecutor<ICourseCreatedResult> _operationExecutor;
+        public CourseCreatedSubscription(global::StrawberryShake.IOperationExecutor<ICourseCreatedResult> operationExecutor)
+        {
+            _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
+        }
+
+        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(ICourseCreatedResult);
+        public global::System.IObservable<global::StrawberryShake.IOperationResult<ICourseCreatedResult>> Watch(global::StrawberryShake.ExecutionStrategy? strategy = null)
+        {
+            var request = CreateRequest();
+            return _operationExecutor.Watch(request, strategy);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest()
+        {
+            return CreateRequest(null);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return new global::StrawberryShake.OperationRequest(id: CourseCreatedSubscriptionDocument.Instance.Hash.Value, name: "CourseCreated", document: CourseCreatedSubscriptionDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default);
+        }
+
+        global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return CreateRequest();
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the CourseCreated GraphQL operation
+    /// <code>
+    /// subscription CourseCreated {
+    ///   courseCreated {
+    ///     __typename
+    ///     id
+    ///     name
+    ///     subject
+    ///     ... on CourseResult {
+    ///       id
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public interface ICourseCreatedSubscription : global::StrawberryShake.IOperationRequestFactory
+    {
+        global::System.IObservable<global::StrawberryShake.IOperationResult<ICourseCreatedResult>> Watch(global::StrawberryShake.ExecutionStrategy? strategy = null);
+    }
+
+    /// <summary>
+    /// Represents the operation service of the CourseUpdated GraphQL operation
+    /// <code>
+    /// subscription CourseUpdated($courseId: Uuid!) {
+    ///   courseUpdated(courseId: $courseId) {
+    ///     __typename
+    ///     id
+    ///     name
+    ///     subject
+    ///     ... on CourseResult {
+    ///       id
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class CourseUpdatedSubscriptionDocument : global::StrawberryShake.IDocument
+    {
+        private CourseUpdatedSubscriptionDocument()
+        {
+        }
+
+        public static CourseUpdatedSubscriptionDocument Instance { get; } = new CourseUpdatedSubscriptionDocument();
+        public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Subscription;
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x73, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x43, 0x6f, 0x75, 0x72, 0x73, 0x65, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x28, 0x24, 0x63, 0x6f, 0x75, 0x72, 0x73, 0x65, 0x49, 0x64, 0x3a, 0x20, 0x55, 0x75, 0x69, 0x64, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x63, 0x6f, 0x75, 0x72, 0x73, 0x65, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x28, 0x63, 0x6f, 0x75, 0x72, 0x73, 0x65, 0x49, 0x64, 0x3a, 0x20, 0x24, 0x63, 0x6f, 0x75, 0x72, 0x73, 0x65, 0x49, 0x64, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x69, 0x64, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x73, 0x75, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x43, 0x6f, 0x75, 0x72, 0x73, 0x65, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "6f16c93fde0be99d712593013f32032d");
+        public override global::System.String ToString()
+        {
+#if NETSTANDARD2_0
+        return global::System.Text.Encoding.UTF8.GetString(Body.ToArray());
+#else
+            return global::System.Text.Encoding.UTF8.GetString(Body);
+#endif
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the CourseUpdated GraphQL operation
+    /// <code>
+    /// subscription CourseUpdated($courseId: Uuid!) {
+    ///   courseUpdated(courseId: $courseId) {
+    ///     __typename
+    ///     id
+    ///     name
+    ///     subject
+    ///     ... on CourseResult {
+    ///       id
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class CourseUpdatedSubscription : global::GraphQLDemo.Client.ICourseUpdatedSubscription
+    {
+        private readonly global::StrawberryShake.IOperationExecutor<ICourseUpdatedResult> _operationExecutor;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _uuidFormatter;
+        public CourseUpdatedSubscription(global::StrawberryShake.IOperationExecutor<ICourseUpdatedResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
+            _uuidFormatter = serializerResolver.GetInputValueFormatter("Uuid");
+        }
+
+        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(ICourseUpdatedResult);
+        public global::System.IObservable<global::StrawberryShake.IOperationResult<ICourseUpdatedResult>> Watch(global::System.Guid courseId, global::StrawberryShake.ExecutionStrategy? strategy = null)
+        {
+            var request = CreateRequest(courseId);
+            return _operationExecutor.Watch(request, strategy);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Guid courseId)
+        {
+            var variables = new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>();
+            variables.Add("courseId", FormatCourseId(courseId));
+            return CreateRequest(variables);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return new global::StrawberryShake.OperationRequest(id: CourseUpdatedSubscriptionDocument.Instance.Hash.Value, name: "CourseUpdated", document: CourseUpdatedSubscriptionDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default, variables: variables);
+        }
+
+        private global::System.Object? FormatCourseId(global::System.Guid value)
+        {
+            return _uuidFormatter.Format(value);
+        }
+
+        global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return CreateRequest(variables!);
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the CourseUpdated GraphQL operation
+    /// <code>
+    /// subscription CourseUpdated($courseId: Uuid!) {
+    ///   courseUpdated(courseId: $courseId) {
+    ///     __typename
+    ///     id
+    ///     name
+    ///     subject
+    ///     ... on CourseResult {
+    ///       id
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public interface ICourseUpdatedSubscription : global::StrawberryShake.IOperationRequestFactory
+    {
+        global::System.IObservable<global::StrawberryShake.IOperationResult<ICourseUpdatedResult>> Watch(global::System.Guid courseId, global::StrawberryShake.ExecutionStrategy? strategy = null);
+    }
+
+    /// <summary>
     /// Represents the operation service of the CreateCourse GraphQL operation
     /// <code>
     /// mutation CreateCourse($courseInput: CourseTypeInput) {
@@ -2081,14 +2622,18 @@ namespace GraphQLDemo.Client
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
     public partial class GraphQLDemoClient : global::GraphQLDemo.Client.IGraphQLDemoClient
     {
+        private readonly global::GraphQLDemo.Client.ICourseCreatedSubscription _courseCreated;
+        private readonly global::GraphQLDemo.Client.ICourseUpdatedSubscription _courseUpdated;
         private readonly global::GraphQLDemo.Client.ICreateCourseMutation _createCourse;
         private readonly global::GraphQLDemo.Client.IDeleteCourseMutation _deleteCourse;
         private readonly global::GraphQLDemo.Client.IUpdateCourseMutation _updateCourse;
         private readonly global::GraphQLDemo.Client.IGetCourseByIdQuery _getCourseById;
         private readonly global::GraphQLDemo.Client.IGetCoursesQuery _getCourses;
         private readonly global::GraphQLDemo.Client.IGetInstructionsQuery _getInstructions;
-        public GraphQLDemoClient(global::GraphQLDemo.Client.ICreateCourseMutation createCourse, global::GraphQLDemo.Client.IDeleteCourseMutation deleteCourse, global::GraphQLDemo.Client.IUpdateCourseMutation updateCourse, global::GraphQLDemo.Client.IGetCourseByIdQuery getCourseById, global::GraphQLDemo.Client.IGetCoursesQuery getCourses, global::GraphQLDemo.Client.IGetInstructionsQuery getInstructions)
+        public GraphQLDemoClient(global::GraphQLDemo.Client.ICourseCreatedSubscription courseCreated, global::GraphQLDemo.Client.ICourseUpdatedSubscription courseUpdated, global::GraphQLDemo.Client.ICreateCourseMutation createCourse, global::GraphQLDemo.Client.IDeleteCourseMutation deleteCourse, global::GraphQLDemo.Client.IUpdateCourseMutation updateCourse, global::GraphQLDemo.Client.IGetCourseByIdQuery getCourseById, global::GraphQLDemo.Client.IGetCoursesQuery getCourses, global::GraphQLDemo.Client.IGetInstructionsQuery getInstructions)
         {
+            _courseCreated = courseCreated ?? throw new global::System.ArgumentNullException(nameof(courseCreated));
+            _courseUpdated = courseUpdated ?? throw new global::System.ArgumentNullException(nameof(courseUpdated));
             _createCourse = createCourse ?? throw new global::System.ArgumentNullException(nameof(createCourse));
             _deleteCourse = deleteCourse ?? throw new global::System.ArgumentNullException(nameof(deleteCourse));
             _updateCourse = updateCourse ?? throw new global::System.ArgumentNullException(nameof(updateCourse));
@@ -2098,6 +2643,8 @@ namespace GraphQLDemo.Client
         }
 
         public static global::System.String ClientName => "GraphQLDemoClient";
+        public global::GraphQLDemo.Client.ICourseCreatedSubscription CourseCreated => _courseCreated;
+        public global::GraphQLDemo.Client.ICourseUpdatedSubscription CourseUpdated => _courseUpdated;
         public global::GraphQLDemo.Client.ICreateCourseMutation CreateCourse => _createCourse;
         public global::GraphQLDemo.Client.IDeleteCourseMutation DeleteCourse => _deleteCourse;
         public global::GraphQLDemo.Client.IUpdateCourseMutation UpdateCourse => _updateCourse;
@@ -2112,6 +2659,10 @@ namespace GraphQLDemo.Client
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
     public interface IGraphQLDemoClient
     {
+        global::GraphQLDemo.Client.ICourseCreatedSubscription CourseCreated { get; }
+
+        global::GraphQLDemo.Client.ICourseUpdatedSubscription CourseUpdated { get; }
+
         global::GraphQLDemo.Client.ICreateCourseMutation CreateCourse { get; }
 
         global::GraphQLDemo.Client.IDeleteCourseMutation DeleteCourse { get; }
@@ -2185,6 +2736,186 @@ namespace GraphQLDemo.Client.State
         }
 
         public global::System.Guid Id { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class CourseCreatedResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::GraphQLDemo.Client.CourseCreatedResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.CourseResultEntity, CourseCreated_CourseCreated_CourseResult> _courseCreated_CourseCreated_CourseResultFromCourseResultEntityMapper;
+        public CourseCreatedResultFactory(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.CourseResultEntity, CourseCreated_CourseCreated_CourseResult> courseCreated_CourseCreated_CourseResultFromCourseResultEntityMapper)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _courseCreated_CourseCreated_CourseResultFromCourseResultEntityMapper = courseCreated_CourseCreated_CourseResultFromCourseResultEntityMapper ?? throw new global::System.ArgumentNullException(nameof(courseCreated_CourseCreated_CourseResultFromCourseResultEntityMapper));
+        }
+
+        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::GraphQLDemo.Client.ICourseCreatedResult);
+        public CourseCreatedResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            if (dataInfo is CourseCreatedResultInfo info)
+            {
+                return new CourseCreatedResult(MapICourseCreated_CourseCreated(info.CourseCreated, snapshot));
+            }
+
+            throw new global::System.ArgumentException("CourseCreatedResultInfo expected.");
+        }
+
+        private global::GraphQLDemo.Client.ICourseCreated_CourseCreated? MapICourseCreated_CourseCreated(global::StrawberryShake.EntityId? entityId, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (entityId is null)
+            {
+                return null;
+            }
+
+            if (entityId.Value.Name.Equals("CourseResult", global::System.StringComparison.Ordinal))
+            {
+                return _courseCreated_CourseCreated_CourseResultFromCourseResultEntityMapper.Map(snapshot.GetEntity<global::GraphQLDemo.Client.State.CourseResultEntity>(entityId.Value) ?? throw new global::StrawberryShake.GraphQLClientException());
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
+        {
+            return Create(dataInfo, snapshot);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class CourseCreatedResultInfo : global::StrawberryShake.IOperationResultDataInfo
+    {
+        private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
+        private readonly global::System.UInt64 _version;
+        public CourseCreatedResultInfo(global::StrawberryShake.EntityId? courseCreated, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
+        {
+            CourseCreated = courseCreated;
+            _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
+            _version = version;
+        }
+
+        public global::StrawberryShake.EntityId? CourseCreated { get; }
+
+        public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
+        public global::System.UInt64 Version => _version;
+        public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
+        {
+            return new CourseCreatedResultInfo(CourseCreated, _entityIds, version);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class CourseCreated_CourseCreated_CourseResultFromCourseResultEntityMapper : global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.CourseResultEntity, CourseCreated_CourseCreated_CourseResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        public CourseCreated_CourseCreated_CourseResultFromCourseResultEntityMapper(global::StrawberryShake.IEntityStore entityStore)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+        }
+
+        public CourseCreated_CourseCreated_CourseResult Map(global::GraphQLDemo.Client.State.CourseResultEntity entity, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            return new CourseCreated_CourseCreated_CourseResult(entity.Id, entity.Name, entity.Subject);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class CourseUpdatedResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::GraphQLDemo.Client.CourseUpdatedResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.CourseResultEntity, CourseUpdated_CourseUpdated_CourseResult> _courseUpdated_CourseUpdated_CourseResultFromCourseResultEntityMapper;
+        public CourseUpdatedResultFactory(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.CourseResultEntity, CourseUpdated_CourseUpdated_CourseResult> courseUpdated_CourseUpdated_CourseResultFromCourseResultEntityMapper)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _courseUpdated_CourseUpdated_CourseResultFromCourseResultEntityMapper = courseUpdated_CourseUpdated_CourseResultFromCourseResultEntityMapper ?? throw new global::System.ArgumentNullException(nameof(courseUpdated_CourseUpdated_CourseResultFromCourseResultEntityMapper));
+        }
+
+        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::GraphQLDemo.Client.ICourseUpdatedResult);
+        public CourseUpdatedResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            if (dataInfo is CourseUpdatedResultInfo info)
+            {
+                return new CourseUpdatedResult(MapICourseUpdated_CourseUpdated(info.CourseUpdated, snapshot));
+            }
+
+            throw new global::System.ArgumentException("CourseUpdatedResultInfo expected.");
+        }
+
+        private global::GraphQLDemo.Client.ICourseUpdated_CourseUpdated? MapICourseUpdated_CourseUpdated(global::StrawberryShake.EntityId? entityId, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (entityId is null)
+            {
+                return null;
+            }
+
+            if (entityId.Value.Name.Equals("CourseResult", global::System.StringComparison.Ordinal))
+            {
+                return _courseUpdated_CourseUpdated_CourseResultFromCourseResultEntityMapper.Map(snapshot.GetEntity<global::GraphQLDemo.Client.State.CourseResultEntity>(entityId.Value) ?? throw new global::StrawberryShake.GraphQLClientException());
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
+        {
+            return Create(dataInfo, snapshot);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class CourseUpdatedResultInfo : global::StrawberryShake.IOperationResultDataInfo
+    {
+        private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
+        private readonly global::System.UInt64 _version;
+        public CourseUpdatedResultInfo(global::StrawberryShake.EntityId? courseUpdated, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
+        {
+            CourseUpdated = courseUpdated;
+            _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
+            _version = version;
+        }
+
+        public global::StrawberryShake.EntityId? CourseUpdated { get; }
+
+        public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
+        public global::System.UInt64 Version => _version;
+        public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
+        {
+            return new CourseUpdatedResultInfo(CourseUpdated, _entityIds, version);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class CourseUpdated_CourseUpdated_CourseResultFromCourseResultEntityMapper : global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.CourseResultEntity, CourseUpdated_CourseUpdated_CourseResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        public CourseUpdated_CourseUpdated_CourseResultFromCourseResultEntityMapper(global::StrawberryShake.IEntityStore entityStore)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+        }
+
+        public CourseUpdated_CourseUpdated_CourseResult Map(global::GraphQLDemo.Client.State.CourseResultEntity entity, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            return new CourseUpdated_CourseUpdated_CourseResult(entity.Id, entity.Name, entity.Subject);
+        }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
@@ -2847,6 +3578,254 @@ namespace GraphQLDemo.Client.State
         global::System.Boolean IsSubjectSet { get; }
 
         global::System.Boolean IsInstructorIdSet { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class CourseCreatedBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::GraphQLDemo.Client.ICourseCreatedResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
+        private readonly global::StrawberryShake.IOperationResultDataFactory<global::GraphQLDemo.Client.ICourseCreatedResult> _resultDataFactory;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::GraphQLDemo.Client.Subject> _subjectParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.Guid> _uuidParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
+        public CourseCreatedBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::GraphQLDemo.Client.ICourseCreatedResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
+            _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
+            _subjectParser = serializerResolver.GetLeafValueParser<global::System.String, global::GraphQLDemo.Client.Subject>("Subject") ?? throw new global::System.ArgumentException("No serializer for type `Subject` found.");
+            _uuidParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.Guid>("Uuid") ?? throw new global::System.ArgumentException("No serializer for type `Uuid` found.");
+            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
+        }
+
+        public global::StrawberryShake.IOperationResult<ICourseCreatedResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
+        {
+            (ICourseCreatedResult Result, CourseCreatedResultInfo Info)? data = null;
+            global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.IClientError>? errors = null;
+            if (response.Exception is null)
+            {
+                try
+                {
+                    if (response.Body != null)
+                    {
+                        if (response.Body.RootElement.TryGetProperty("data", out global::System.Text.Json.JsonElement dataElement) && dataElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
+                        {
+                            data = BuildData(dataElement);
+                        }
+
+                        if (response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                        {
+                            errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                        }
+                    }
+                }
+                catch (global::System.Exception ex)
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(ex.Message, exception: ex, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+            else
+            {
+                errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(response.Exception.Message, exception: response.Exception, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+            }
+
+            return new global::StrawberryShake.OperationResult<ICourseCreatedResult>(data?.Result, data?.Info, _resultDataFactory, errors);
+        }
+
+        private (ICourseCreatedResult, CourseCreatedResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
+        {
+            var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
+            global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
+            global::StrawberryShake.EntityId? courseCreatedId = default !;
+            _entityStore.Update(session =>
+            {
+                courseCreatedId = UpdateICourseCreated_CourseCreatedEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "courseCreated"), entityIds);
+                snapshot = session.CurrentSnapshot;
+            });
+            var resultInfo = new CourseCreatedResultInfo(courseCreatedId, entityIds, snapshot.Version);
+            return (_resultDataFactory.Create(resultInfo), resultInfo);
+        }
+
+        private global::StrawberryShake.EntityId? UpdateICourseCreated_CourseCreatedEntity(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            global::StrawberryShake.EntityId entityId = _idSerializer.Parse(obj.Value);
+            entityIds.Add(entityId);
+            if (entityId.Name.Equals("CourseResult", global::System.StringComparison.Ordinal))
+            {
+                if (session.CurrentSnapshot.TryGetEntity(entityId, out global::GraphQLDemo.Client.State.CourseResultEntity? entity))
+                {
+                    session.SetEntity(entityId, new global::GraphQLDemo.Client.State.CourseResultEntity(DeserializeNonNullableGuid(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), DeserializeNonNullableSubject(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "subject"))));
+                }
+                else
+                {
+                    session.SetEntity(entityId, new global::GraphQLDemo.Client.State.CourseResultEntity(DeserializeNonNullableGuid(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), DeserializeNonNullableSubject(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "subject"))));
+                }
+
+                return entityId;
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Guid DeserializeNonNullableGuid(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _uuidParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.String? DeserializeString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _stringParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::GraphQLDemo.Client.Subject DeserializeNonNullableSubject(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _subjectParser.Parse(obj.Value.GetString()!);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class CourseUpdatedBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::GraphQLDemo.Client.ICourseUpdatedResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
+        private readonly global::StrawberryShake.IOperationResultDataFactory<global::GraphQLDemo.Client.ICourseUpdatedResult> _resultDataFactory;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::GraphQLDemo.Client.Subject> _subjectParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.Guid> _uuidParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
+        public CourseUpdatedBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::GraphQLDemo.Client.ICourseUpdatedResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
+            _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
+            _subjectParser = serializerResolver.GetLeafValueParser<global::System.String, global::GraphQLDemo.Client.Subject>("Subject") ?? throw new global::System.ArgumentException("No serializer for type `Subject` found.");
+            _uuidParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.Guid>("Uuid") ?? throw new global::System.ArgumentException("No serializer for type `Uuid` found.");
+            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
+        }
+
+        public global::StrawberryShake.IOperationResult<ICourseUpdatedResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
+        {
+            (ICourseUpdatedResult Result, CourseUpdatedResultInfo Info)? data = null;
+            global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.IClientError>? errors = null;
+            if (response.Exception is null)
+            {
+                try
+                {
+                    if (response.Body != null)
+                    {
+                        if (response.Body.RootElement.TryGetProperty("data", out global::System.Text.Json.JsonElement dataElement) && dataElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
+                        {
+                            data = BuildData(dataElement);
+                        }
+
+                        if (response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                        {
+                            errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                        }
+                    }
+                }
+                catch (global::System.Exception ex)
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(ex.Message, exception: ex, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+            else
+            {
+                errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(response.Exception.Message, exception: response.Exception, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+            }
+
+            return new global::StrawberryShake.OperationResult<ICourseUpdatedResult>(data?.Result, data?.Info, _resultDataFactory, errors);
+        }
+
+        private (ICourseUpdatedResult, CourseUpdatedResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
+        {
+            var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
+            global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
+            global::StrawberryShake.EntityId? courseUpdatedId = default !;
+            _entityStore.Update(session =>
+            {
+                courseUpdatedId = UpdateICourseUpdated_CourseUpdatedEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "courseUpdated"), entityIds);
+                snapshot = session.CurrentSnapshot;
+            });
+            var resultInfo = new CourseUpdatedResultInfo(courseUpdatedId, entityIds, snapshot.Version);
+            return (_resultDataFactory.Create(resultInfo), resultInfo);
+        }
+
+        private global::StrawberryShake.EntityId? UpdateICourseUpdated_CourseUpdatedEntity(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            global::StrawberryShake.EntityId entityId = _idSerializer.Parse(obj.Value);
+            entityIds.Add(entityId);
+            if (entityId.Name.Equals("CourseResult", global::System.StringComparison.Ordinal))
+            {
+                if (session.CurrentSnapshot.TryGetEntity(entityId, out global::GraphQLDemo.Client.State.CourseResultEntity? entity))
+                {
+                    session.SetEntity(entityId, new global::GraphQLDemo.Client.State.CourseResultEntity(DeserializeNonNullableGuid(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), DeserializeNonNullableSubject(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "subject"))));
+                }
+                else
+                {
+                    session.SetEntity(entityId, new global::GraphQLDemo.Client.State.CourseResultEntity(DeserializeNonNullableGuid(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), DeserializeNonNullableSubject(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "subject"))));
+                }
+
+                return entityId;
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Guid DeserializeNonNullableGuid(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _uuidParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.String? DeserializeString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _stringParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::GraphQLDemo.Client.Subject DeserializeNonNullableSubject(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _subjectParser.Parse(obj.Value.GetString()!);
+        }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
@@ -3735,6 +4714,8 @@ namespace Microsoft.Extensions.DependencyInjection
                 return new ClientServiceProvider(global::Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(serviceCollection));
             });
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => new global::GraphQLDemo.Client.State.GraphQLDemoClientStoreAccessor(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityIdSerializer>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationRequestFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationResultDataFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp))));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQLDemo.Client.CourseCreatedSubscription>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQLDemo.Client.CourseUpdatedSubscription>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQLDemo.Client.CreateCourseMutation>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQLDemo.Client.DeleteCourseMutation>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQLDemo.Client.UpdateCourseMutation>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
@@ -3750,11 +4731,18 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             global::Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddSingleton<global::StrawberryShake.IEntityStore, global::StrawberryShake.EntityStore>(services);
             global::Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddSingleton<global::StrawberryShake.IOperationStore>(services, sp => new global::StrawberryShake.OperationStore(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityStore>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Transport.WebSockets.IWebSocketConnection>(services, sp =>
+            {
+                var sessionPool = global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.WebSockets.ISessionPool>(parentServices);
+                return new global::StrawberryShake.Transport.WebSockets.WebSocketConnection(async ct => await sessionPool.CreateAsync("GraphQLDemoClient", ct));
+            });
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Transport.Http.IHttpConnection>(services, sp =>
             {
                 var clientFactory = global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Net.Http.IHttpClientFactory>(parentServices);
                 return new global::StrawberryShake.Transport.Http.HttpConnection(() => clientFactory.CreateClient("GraphQLDemoClient"));
             });
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.CourseResultEntity, global::GraphQLDemo.Client.CourseCreated_CourseCreated_CourseResult>, global::GraphQLDemo.Client.State.CourseCreated_CourseCreated_CourseResultFromCourseResultEntityMapper>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.CourseResultEntity, global::GraphQLDemo.Client.CourseUpdated_CourseUpdated_CourseResult>, global::GraphQLDemo.Client.State.CourseUpdated_CourseUpdated_CourseResultFromCourseResultEntityMapper>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.CourseResultEntity, global::GraphQLDemo.Client.CreateCourse_CreateCourse_CourseResult>, global::GraphQLDemo.Client.State.CreateCourse_CreateCourse_CourseResultFromCourseResultEntityMapper>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.CourseResultEntity, global::GraphQLDemo.Client.UpdateCourse_UpdateCourse_CourseResult>, global::GraphQLDemo.Client.State.UpdateCourse_UpdateCourse_CourseResultFromCourseResultEntityMapper>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.CourseTypeEntity, global::GraphQLDemo.Client.GetCourseById_CourseById_CourseType>, global::GraphQLDemo.Client.State.GetCourseById_CourseById_CourseTypeFromCourseTypeEntityMapper>(services);
@@ -3781,6 +4769,20 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.TimeSpanSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::GraphQLDemo.Client.CourseTypeInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializerResolver>(services, sp => new global::StrawberryShake.Serialization.SerializerResolver(global::System.Linq.Enumerable.Concat(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(parentServices), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(sp))));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::GraphQLDemo.Client.ICourseCreatedResult>, global::GraphQLDemo.Client.State.CourseCreatedResultFactory>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::GraphQLDemo.Client.ICourseCreatedResult>>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQLDemo.Client.ICourseCreatedSubscription>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::GraphQLDemo.Client.ICourseCreatedResult>, global::GraphQLDemo.Client.State.CourseCreatedBuilder>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::GraphQLDemo.Client.ICourseCreatedResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::GraphQLDemo.Client.ICourseCreatedResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.WebSockets.IWebSocketConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::GraphQLDemo.Client.ICourseCreatedResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::GraphQLDemo.Client.CourseCreatedSubscription>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::GraphQLDemo.Client.ICourseCreatedSubscription>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQLDemo.Client.CourseCreatedSubscription>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::GraphQLDemo.Client.ICourseUpdatedResult>, global::GraphQLDemo.Client.State.CourseUpdatedResultFactory>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::GraphQLDemo.Client.ICourseUpdatedResult>>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQLDemo.Client.ICourseUpdatedSubscription>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::GraphQLDemo.Client.ICourseUpdatedResult>, global::GraphQLDemo.Client.State.CourseUpdatedBuilder>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::GraphQLDemo.Client.ICourseUpdatedResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::GraphQLDemo.Client.ICourseUpdatedResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.WebSockets.IWebSocketConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::GraphQLDemo.Client.ICourseUpdatedResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::GraphQLDemo.Client.CourseUpdatedSubscription>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::GraphQLDemo.Client.ICourseUpdatedSubscription>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQLDemo.Client.CourseUpdatedSubscription>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::GraphQLDemo.Client.ICreateCourseResult>, global::GraphQLDemo.Client.State.CreateCourseResultFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::GraphQLDemo.Client.ICreateCourseResult>>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQLDemo.Client.ICreateCourseMutation>(sp));
