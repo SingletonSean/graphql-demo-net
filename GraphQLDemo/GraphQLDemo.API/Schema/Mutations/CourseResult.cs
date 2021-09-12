@@ -1,4 +1,5 @@
-﻿using GraphQLDemo.API.Schema.Queries;
+﻿using GraphQLDemo.API.Models;
+using GraphQLDemo.API.Schema.Queries;
 using System;
 using System.Collections.Generic;
 using System.Linq;

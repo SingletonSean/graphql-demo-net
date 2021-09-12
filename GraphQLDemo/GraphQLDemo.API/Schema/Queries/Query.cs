@@ -1,4 +1,5 @@
 ﻿using Bogus;
+using GraphQLDemo.API.Models;
 using HotChocolate;
 using System;
 using System.Collections.Generic;
