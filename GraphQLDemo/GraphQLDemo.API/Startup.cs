@@ -3,6 +3,7 @@ using GraphQLDemo.API.Schema.Mutations;
 using GraphQLDemo.API.Schema.Queries;
 using GraphQLDemo.API.Schema.Subscriptions;
 using GraphQLDemo.API.Services;
+using GraphQLDemo.API.Services.Courses;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -37,6 +38,8 @@ namespace GraphQLDemo.API
 
             string connectionString = _configuration.GetConnectionString("default");
             services.AddPooledDbContextFactory<SchoolDbContext>(o => o.UseSqlite(connectionString));
+
+            services.AddScoped<CoursesRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
