@@ -1,9 +1,11 @@
+using GraphQLDemo.API.DataLoaders;
 using GraphQLDemo.API.Schema;
 using GraphQLDemo.API.Schema.Mutations;
 using GraphQLDemo.API.Schema.Queries;
 using GraphQLDemo.API.Schema.Subscriptions;
 using GraphQLDemo.API.Services;
 using GraphQLDemo.API.Services.Courses;
+using GraphQLDemo.API.Services.Instructors;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -40,6 +42,8 @@ namespace GraphQLDemo.API
             services.AddPooledDbContextFactory<SchoolDbContext>(o => o.UseSqlite(connectionString));
 
             services.AddScoped<CoursesRepository>();
+            services.AddScoped<InstructorsRepository>();
+            services.AddScoped<InstructorDataLoader>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
