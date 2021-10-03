@@ -1,8 +1,11 @@
 ﻿using Bogus;
 using GraphQLDemo.API.DTOs;
 using GraphQLDemo.API.Models;
+using GraphQLDemo.API.Services;
 using GraphQLDemo.API.Services.Courses;
 using HotChocolate;
+using HotChocolate.Data;
+using HotChocolate.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +27,19 @@ namespace GraphQLDemo.API.Schema.Queries
             IEnumerable<CourseDTO> courseDTOs = await _coursesRepository.GetAll();
 
             return courseDTOs.Select(c => new CourseType()
+            {
+                Id = c.Id,
+                Name = c.Name,
+                Subject = c.Subject,
+                InstructorId = c.InstructorId
+            });
+        }
+
+        [UseDbContext(typeof(SchoolDbContext))]
+        [UsePaging(IncludeTotalCount = true, DefaultPageSize = 10)]
+        public IQueryable<CourseType> GetPaginatedCourses([ScopedService] SchoolDbContext context)
+        {
+            return context.Courses.Select(c => new CourseType()
             {
                 Id = c.Id,
                 Name = c.Name,
