@@ -1,6 +1,7 @@
 ﻿using Bogus;
 using GraphQLDemo.API.DTOs;
 using GraphQLDemo.API.Models;
+using GraphQLDemo.API.Schema.Filters;
 using GraphQLDemo.API.Services;
 using GraphQLDemo.API.Services.Courses;
 using HotChocolate;
@@ -37,6 +38,7 @@ namespace GraphQLDemo.API.Schema.Queries
 
         [UseDbContext(typeof(SchoolDbContext))]
         [UsePaging(IncludeTotalCount = true, DefaultPageSize = 10)]
+        [UseFiltering(typeof(CourseFilterType))]
         public IQueryable<CourseType> GetPaginatedCourses([ScopedService] SchoolDbContext context)
         {
             return context.Courses.Select(c => new CourseType()

@@ -34,12 +34,13 @@ namespace GraphQLDemo.API
             services.AddGraphQLServer()
                 .AddQueryType<Query>()
                 .AddMutationType<Mutation>()
-                .AddSubscriptionType<Subscription>();
+                .AddSubscriptionType<Subscription>()
+                .AddFiltering();
 
             services.AddInMemorySubscriptions();
 
             string connectionString = _configuration.GetConnectionString("default");
-            services.AddPooledDbContextFactory<SchoolDbContext>(o => o.UseSqlite(connectionString));
+            services.AddPooledDbContextFactory<SchoolDbContext>(o => o.UseSqlite(connectionString).LogTo(Console.WriteLine));
 
             services.AddScoped<CoursesRepository>();
             services.AddScoped<InstructorsRepository>();
