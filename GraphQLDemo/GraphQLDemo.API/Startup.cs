@@ -36,7 +36,8 @@ namespace GraphQLDemo.API
                 .AddMutationType<Mutation>()
                 .AddSubscriptionType<Subscription>()
                 .AddFiltering()
-                .AddSorting();
+                .AddSorting()
+                .AddProjections();
 
             services.AddInMemorySubscriptions();
 

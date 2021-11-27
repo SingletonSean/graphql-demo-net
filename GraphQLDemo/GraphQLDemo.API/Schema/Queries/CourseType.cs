@@ -3,6 +3,7 @@ using GraphQLDemo.API.DTOs;
 using GraphQLDemo.API.Models;
 using GraphQLDemo.API.Services.Instructors;
 using HotChocolate;
+using HotChocolate.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,8 @@ namespace GraphQLDemo.API.Schema.Queries
         public Guid Id { get; set; }
         public string Name { get; set; }
         public Subject Subject { get; set; }
+
+        [IsProjected(true)]
         public Guid InstructorId { get; set; }
 
         [GraphQLNonNullType]
