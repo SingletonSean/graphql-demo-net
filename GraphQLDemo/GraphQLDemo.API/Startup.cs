@@ -1,3 +1,5 @@
+using FirebaseAdmin;
+using FirebaseAdminAuthentication.DependencyInjection.Extensions;
 using GraphQLDemo.API.DataLoaders;
 using GraphQLDemo.API.Schema;
 using GraphQLDemo.API.Schema.Mutations;
@@ -37,7 +39,11 @@ namespace GraphQLDemo.API
                 .AddSubscriptionType<Subscription>()
                 .AddFiltering()
                 .AddSorting()
-                .AddProjections();
+                .AddProjections()
+                .AddAuthorization();
+
+            services.AddSingleton(FirebaseApp.Create());
+            services.AddFirebaseAuthentication();
 
             services.AddInMemorySubscriptions();
 
@@ -57,6 +63,8 @@ namespace GraphQLDemo.API
             }
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseWebSockets();
 
