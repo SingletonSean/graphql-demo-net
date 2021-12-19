@@ -1,5 +1,6 @@
 using FirebaseAdmin;
 using FirebaseAdminAuthentication.DependencyInjection.Extensions;
+using FirebaseAdminAuthentication.DependencyInjection.Models;
 using GraphQLDemo.API.DataLoaders;
 using GraphQLDemo.API.Schema;
 using GraphQLDemo.API.Schema.Mutations;
@@ -44,6 +45,9 @@ namespace GraphQLDemo.API
 
             services.AddSingleton(FirebaseApp.Create());
             services.AddFirebaseAuthentication();
+            services.AddAuthorization(
+                o => o.AddPolicy("IsAdmin",
+                    p => p.RequireClaim(FirebaseUserClaimType.EMAIL, "singletonsean4@gmail.com")));
 
             services.AddInMemorySubscriptions();
 
