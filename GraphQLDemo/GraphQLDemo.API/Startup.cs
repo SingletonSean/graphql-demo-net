@@ -1,4 +1,5 @@
 using FirebaseAdmin;
+using FirebaseAdmin.Auth;
 using FirebaseAdminAuthentication.DependencyInjection.Extensions;
 using FirebaseAdminAuthentication.DependencyInjection.Models;
 using GraphQLDemo.API.DataLoaders;
@@ -42,7 +43,7 @@ namespace GraphQLDemo.API
                 .AddSorting()
                 .AddProjections()
                 .AddAuthorization();
-
+            
             services.AddSingleton(FirebaseApp.Create());
             services.AddFirebaseAuthentication();
             services.AddAuthorization(
@@ -57,6 +58,7 @@ namespace GraphQLDemo.API
             services.AddScoped<CoursesRepository>();
             services.AddScoped<InstructorsRepository>();
             services.AddScoped<InstructorDataLoader>();
+            services.AddScoped<UserDataLoader>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

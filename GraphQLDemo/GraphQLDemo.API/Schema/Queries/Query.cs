@@ -24,32 +24,20 @@ namespace GraphQLDemo.API.Schema.Queries
             _coursesRepository = coursesRepository;
         }
 
-        public async Task<IEnumerable<CourseType>> GetCourses()
-        {
-            IEnumerable<CourseDTO> courseDTOs = await _coursesRepository.GetAll();
-
-            return courseDTOs.Select(c => new CourseType()
-            {
-                Id = c.Id,
-                Name = c.Name,
-                Subject = c.Subject,
-                InstructorId = c.InstructorId
-            });
-        }
-
         [UseDbContext(typeof(SchoolDbContext))]
         [UsePaging(IncludeTotalCount = true, DefaultPageSize = 10)]
         [UseProjection]
         [UseFiltering(typeof(CourseFilterType))]
         [UseSorting(typeof(CourseSortType))]
-        public IQueryable<CourseType> GetPaginatedCourses([ScopedService] SchoolDbContext context)
+        public IQueryable<CourseType> GetCourses([ScopedService] SchoolDbContext context)
         {
             return context.Courses.Select(c => new CourseType()
             {
                 Id = c.Id,
                 Name = c.Name,
                 Subject = c.Subject,
-                InstructorId = c.InstructorId
+                InstructorId = c.InstructorId,
+                CreatorId = c.CreatorId
             });
         }
 
@@ -62,7 +50,8 @@ namespace GraphQLDemo.API.Schema.Queries
                 Id = courseDTO.Id,
                 Name = courseDTO.Name,
                 Subject = courseDTO.Subject,
-                InstructorId = courseDTO.InstructorId
+                InstructorId = courseDTO.InstructorId,
+                CreatorId = courseDTO.CreatorId
             };
         }
 
