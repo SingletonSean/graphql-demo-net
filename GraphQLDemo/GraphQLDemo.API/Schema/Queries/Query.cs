@@ -1,14 +1,7 @@
-﻿using Bogus;
-using GraphQLDemo.API.DTOs;
-using GraphQLDemo.API.Models;
-using GraphQLDemo.API.Schema.Filters;
-using GraphQLDemo.API.Schema.Sorters;
-using GraphQLDemo.API.Services;
-using GraphQLDemo.API.Services.Courses;
+﻿using GraphQLDemo.API.Services;
 using HotChocolate;
 using HotChocolate.Data;
-using HotChocolate.Types;
-using System;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,42 +10,35 @@ namespace GraphQLDemo.API.Schema.Queries
 {
     public class Query
     {
-        private readonly CoursesRepository _coursesRepository;
-
-        public Query(CoursesRepository coursesRepository)
-        {
-            _coursesRepository = coursesRepository;
-        }
-
         [UseDbContext(typeof(SchoolDbContext))]
-        [UsePaging(IncludeTotalCount = true, DefaultPageSize = 10)]
-        [UseProjection]
-        [UseFiltering(typeof(CourseFilterType))]
-        [UseSorting(typeof(CourseSortType))]
-        public IQueryable<CourseType> GetCourses([ScopedService] SchoolDbContext context)
+        public async Task<IEnumerable<ISearchResultType>> Search(string term, [ScopedService] SchoolDbContext context) 
         {
-            return context.Courses.Select(c => new CourseType()
-            {
-                Id = c.Id,
-                Name = c.Name,
-                Subject = c.Subject,
-                InstructorId = c.InstructorId,
-                CreatorId = c.CreatorId
-            });
-        }
+            IEnumerable<CourseType> courses = await context.Courses
+                .Where(c => c.Name.Contains(term))
+                .Select(c => new CourseType()
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    Subject = c.Subject,
+                    InstructorId = c.InstructorId,
+                    CreatorId = c.CreatorId
+                })
+                .ToListAsync();
 
-        public async Task<CourseType> GetCourseByIdAsync(Guid id)
-        {
-            CourseDTO courseDTO = await _coursesRepository.GetById(id);
+            IEnumerable<InstructorType> instructors = await context.Instructors
+                .Where(i => i.FirstName.Contains(term) || i.LastName.Contains(term))
+                .Select(i => new InstructorType()
+                {
+                    Id = i.Id,
+                    FirstName = i.FirstName,
+                    LastName = i.LastName,
+                    Salary = i.Salary,
+                })
+                .ToListAsync();
 
-            return new CourseType()
-            {
-                Id = courseDTO.Id,
-                Name = courseDTO.Name,
-                Subject = courseDTO.Subject,
-                InstructorId = courseDTO.InstructorId,
-                CreatorId = courseDTO.CreatorId
-            };
+            return new List<ISearchResultType>()
+                .Concat(courses)
+                .Concat(instructors);
         }
 
         [GraphQLDeprecated("This query is deprecated.")]
