@@ -1,8 +1,11 @@
-﻿using FirebaseAdminAuthentication.DependencyInjection.Models;
+﻿using AppAny.HotChocolate.FluentValidation;
+using FirebaseAdminAuthentication.DependencyInjection.Models;
+using FluentValidation.Results;
 using GraphQLDemo.API.DTOs;
 using GraphQLDemo.API.Schema.Queries;
 using GraphQLDemo.API.Schema.Subscriptions;
 using GraphQLDemo.API.Services.Courses;
+using GraphQLDemo.API.Validators;
 using HotChocolate;
 using HotChocolate.AspNetCore.Authorization;
 using HotChocolate.Subscriptions;
@@ -24,7 +27,8 @@ namespace GraphQLDemo.API.Schema.Mutations
         }
 
         [Authorize]
-        public async Task<CourseResult> CreateCourse(CourseTypeInput courseInput,
+        public async Task<CourseResult> CreateCourse(
+            [UseFluentValidation, UseValidator(typeof(CourseTypeInputValidator))] CourseTypeInput courseInput,
             [Service] ITopicEventSender topicEventSender,
             ClaimsPrincipal claimsPrincipal)
         {
@@ -54,8 +58,8 @@ namespace GraphQLDemo.API.Schema.Mutations
         }
 
         [Authorize]
-        public async Task<CourseResult> UpdateCourse(Guid id, 
-            CourseTypeInput courseInput, 
+        public async Task<CourseResult> UpdateCourse(Guid id,
+            [UseFluentValidation, UseValidator(typeof(CourseTypeInputValidator))] CourseTypeInput courseInput,
             [Service] ITopicEventSender topicEventSender,
             ClaimsPrincipal claimsPrincipal)
         {

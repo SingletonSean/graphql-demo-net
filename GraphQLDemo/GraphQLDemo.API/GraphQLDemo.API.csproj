@@ -5,8 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AppAny.HotChocolate.FluentValidation" Version="0.3.9" />
     <PackageReference Include="Bogus" Version="33.0.2" />
     <PackageReference Include="FirebaseAdminAuthentication.DependencyInjection" Version="1.0.2" />
+    <PackageReference Include="FluentValidation" Version="10.3.6" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="10.3.6" />
     <PackageReference Include="HotChocolate.AspNetCore" Version="11.3.1" />
     <PackageReference Include="HotChocolate.AspNetCore.Authorization" Version="11.3.8" />
     <PackageReference Include="HotChocolate.Data.EntityFramework" Version="11.3.7" />

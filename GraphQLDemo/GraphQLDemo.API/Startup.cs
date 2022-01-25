@@ -1,7 +1,9 @@
+using AppAny.HotChocolate.FluentValidation;
 using FirebaseAdmin;
 using FirebaseAdmin.Auth;
 using FirebaseAdminAuthentication.DependencyInjection.Extensions;
 using FirebaseAdminAuthentication.DependencyInjection.Models;
+using FluentValidation.AspNetCore;
 using GraphQLDemo.API.DataLoaders;
 using GraphQLDemo.API.Schema;
 using GraphQLDemo.API.Schema.Mutations;
@@ -10,6 +12,7 @@ using GraphQLDemo.API.Schema.Subscriptions;
 using GraphQLDemo.API.Services;
 using GraphQLDemo.API.Services.Courses;
 using GraphQLDemo.API.Services.Instructors;
+using GraphQLDemo.API.Validators;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -35,6 +38,9 @@ namespace GraphQLDemo.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddFluentValidation();
+            services.AddTransient<CourseTypeInputValidator>();
+
             services.AddGraphQLServer()
                 .AddQueryType<Query>()
                 .AddMutationType<Mutation>()
@@ -45,7 +51,11 @@ namespace GraphQLDemo.API
                 .AddFiltering()
                 .AddSorting()
                 .AddProjections()
-                .AddAuthorization();
+                .AddAuthorization()
+                .AddFluentValidation(o =>
+                {
+                    o.UseDefaultErrorMapper();
+                });
             
             services.AddSingleton(FirebaseApp.Create());
             services.AddFirebaseAuthentication();
