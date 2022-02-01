@@ -714,12 +714,12 @@ namespace GraphQLDemo.Client
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
     public partial class GetCoursesResult : global::System.IEquatable<GetCoursesResult>, IGetCoursesResult
     {
-        public GetCoursesResult(global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.IGetCourses_Courses?>? courses)
+        public GetCoursesResult(global::GraphQLDemo.Client.IGetCourses_Courses? courses)
         {
             Courses = courses;
         }
 
-        public global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.IGetCourses_Courses?>? Courses { get; }
+        public global::GraphQLDemo.Client.IGetCourses_Courses? Courses { get; }
 
         public virtual global::System.Boolean Equals(GetCoursesResult? other)
         {
@@ -738,7 +738,7 @@ namespace GraphQLDemo.Client
                 return false;
             }
 
-            return (global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Courses, other.Courses));
+            return (((Courses is null && other.Courses is null) || Courses != null && Courses.Equals(other.Courses)));
         }
 
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -768,13 +768,7 @@ namespace GraphQLDemo.Client
                 int hash = 5;
                 if (Courses != null)
                 {
-                    foreach (var Courses_elm in Courses)
-                    {
-                        if (Courses_elm != null)
-                        {
-                            hash ^= 397 * Courses_elm.GetHashCode();
-                        }
-                    }
+                    hash ^= 397 * Courses.GetHashCode();
                 }
 
                 return hash;
@@ -782,23 +776,32 @@ namespace GraphQLDemo.Client
         }
     }
 
+    /// <summary>
+    /// A connection to a list of items.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
-    public partial class GetCourses_Courses_CourseType : global::System.IEquatable<GetCourses_Courses_CourseType>, IGetCourses_Courses_CourseType
+    public partial class GetCourses_Courses_CourseTypeConnection : global::System.IEquatable<GetCourses_Courses_CourseTypeConnection>, IGetCourses_Courses_CourseTypeConnection
     {
-        public GetCourses_Courses_CourseType(global::System.String? name, global::GraphQLDemo.Client.IGetCourses_Courses_Instructor instructor, global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.IGetCourses_Courses_Students?>? students)
+        public GetCourses_Courses_CourseTypeConnection(global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.IGetCourses_Courses_Nodes?>? nodes, global::GraphQLDemo.Client.IGetCourses_Courses_PageInfo pageInfo, global::System.Int32 totalCount)
         {
-            Name = name;
-            Instructor = instructor;
-            Students = students;
+            Nodes = nodes;
+            PageInfo = pageInfo;
+            TotalCount = totalCount;
         }
 
-        public global::System.String? Name { get; }
+        /// <summary>
+        /// A flattened list of the nodes.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.IGetCourses_Courses_Nodes?>? Nodes { get; }
 
-        public global::GraphQLDemo.Client.IGetCourses_Courses_Instructor Instructor { get; }
+        /// <summary>
+        /// Information to aid in pagination.
+        /// </summary>
+        public global::GraphQLDemo.Client.IGetCourses_Courses_PageInfo PageInfo { get; }
 
-        public global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.IGetCourses_Courses_Students?>? Students { get; }
+        public global::System.Int32 TotalCount { get; }
 
-        public virtual global::System.Boolean Equals(GetCourses_Courses_CourseType? other)
+        public virtual global::System.Boolean Equals(GetCourses_Courses_CourseTypeConnection? other)
         {
             if (ReferenceEquals(null, other))
             {
@@ -815,7 +818,7 @@ namespace GraphQLDemo.Client
                 return false;
             }
 
-            return (((Name is null && other.Name is null) || Name != null && Name.Equals(other.Name))) && Instructor.Equals(other.Instructor) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Students, other.Students);
+            return (global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Nodes, other.Nodes)) && PageInfo.Equals(other.PageInfo) && TotalCount == other.TotalCount;
         }
 
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -835,7 +838,7 @@ namespace GraphQLDemo.Client
                 return false;
             }
 
-            return Equals((GetCourses_Courses_CourseType)obj);
+            return Equals((GetCourses_Courses_CourseTypeConnection)obj);
         }
 
         public override global::System.Int32 GetHashCode()
@@ -843,104 +846,44 @@ namespace GraphQLDemo.Client
             unchecked
             {
                 int hash = 5;
-                if (Name != null)
+                if (Nodes != null)
                 {
-                    hash ^= 397 * Name.GetHashCode();
-                }
-
-                hash ^= 397 * Instructor.GetHashCode();
-                if (Students != null)
-                {
-                    foreach (var Students_elm in Students)
+                    foreach (var Nodes_elm in Nodes)
                     {
-                        if (Students_elm != null)
+                        if (Nodes_elm != null)
                         {
-                            hash ^= 397 * Students_elm.GetHashCode();
+                            hash ^= 397 * Nodes_elm.GetHashCode();
                         }
                     }
                 }
 
+                hash ^= 397 * PageInfo.GetHashCode();
+                hash ^= 397 * TotalCount.GetHashCode();
                 return hash;
             }
         }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
-    public partial class GetCourses_Courses_Instructor_InstructorType : global::System.IEquatable<GetCourses_Courses_Instructor_InstructorType>, IGetCourses_Courses_Instructor_InstructorType
+    public partial class GetCourses_Courses_Nodes_CourseType : global::System.IEquatable<GetCourses_Courses_Nodes_CourseType>, IGetCourses_Courses_Nodes_CourseType
     {
-        public GetCourses_Courses_Instructor_InstructorType(global::System.String? firstName)
-        {
-            FirstName = firstName;
-        }
-
-        public global::System.String? FirstName { get; }
-
-        public virtual global::System.Boolean Equals(GetCourses_Courses_Instructor_InstructorType? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (((FirstName is null && other.FirstName is null) || FirstName != null && FirstName.Equals(other.FirstName)));
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((GetCourses_Courses_Instructor_InstructorType)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                if (FirstName != null)
-                {
-                    hash ^= 397 * FirstName.GetHashCode();
-                }
-
-                return hash;
-            }
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
-    public partial class GetCourses_Courses_Students_StudentType : global::System.IEquatable<GetCourses_Courses_Students_StudentType>, IGetCourses_Courses_Students_StudentType
-    {
-        public GetCourses_Courses_Students_StudentType(global::System.Guid id)
+        public GetCourses_Courses_Nodes_CourseType(global::System.Guid id, global::System.String? name, global::GraphQLDemo.Client.Subject subject, global::GraphQLDemo.Client.IGetCourses_Courses_Nodes_Instructor instructor)
         {
             Id = id;
+            Name = name;
+            Subject = subject;
+            Instructor = instructor;
         }
 
         public global::System.Guid Id { get; }
 
-        public virtual global::System.Boolean Equals(GetCourses_Courses_Students_StudentType? other)
+        public global::System.String? Name { get; }
+
+        public global::GraphQLDemo.Client.Subject Subject { get; }
+
+        public global::GraphQLDemo.Client.IGetCourses_Courses_Nodes_Instructor Instructor { get; }
+
+        public virtual global::System.Boolean Equals(GetCourses_Courses_Nodes_CourseType? other)
         {
             if (ReferenceEquals(null, other))
             {
@@ -957,7 +900,7 @@ namespace GraphQLDemo.Client
                 return false;
             }
 
-            return (Id.Equals(other.Id));
+            return (Id.Equals(other.Id)) && ((Name is null && other.Name is null) || Name != null && Name.Equals(other.Name)) && Subject.Equals(other.Subject) && Instructor.Equals(other.Instructor);
         }
 
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -977,7 +920,7 @@ namespace GraphQLDemo.Client
                 return false;
             }
 
-            return Equals((GetCourses_Courses_Students_StudentType)obj);
+            return Equals((GetCourses_Courses_Nodes_CourseType)obj);
         }
 
         public override global::System.Int32 GetHashCode()
@@ -986,6 +929,190 @@ namespace GraphQLDemo.Client
             {
                 int hash = 5;
                 hash ^= 397 * Id.GetHashCode();
+                if (Name != null)
+                {
+                    hash ^= 397 * Name.GetHashCode();
+                }
+
+                hash ^= 397 * Subject.GetHashCode();
+                hash ^= 397 * Instructor.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Information about pagination in a connection.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class GetCourses_Courses_PageInfo_PageInfo : global::System.IEquatable<GetCourses_Courses_PageInfo_PageInfo>, IGetCourses_Courses_PageInfo_PageInfo
+    {
+        public GetCourses_Courses_PageInfo_PageInfo(global::System.String? startCursor, global::System.String? endCursor, global::System.Boolean hasNextPage, global::System.Boolean hasPreviousPage)
+        {
+            StartCursor = startCursor;
+            EndCursor = endCursor;
+            HasNextPage = hasNextPage;
+            HasPreviousPage = hasPreviousPage;
+        }
+
+        /// <summary>
+        /// When paginating backwards, the cursor to continue.
+        /// </summary>
+        public global::System.String? StartCursor { get; }
+
+        /// <summary>
+        /// When paginating forwards, the cursor to continue.
+        /// </summary>
+        public global::System.String? EndCursor { get; }
+
+        /// <summary>
+        /// Indicates whether more edges exist following the set defined by the clients arguments.
+        /// </summary>
+        public global::System.Boolean HasNextPage { get; }
+
+        /// <summary>
+        /// Indicates whether more edges exist prior the set defined by the clients arguments.
+        /// </summary>
+        public global::System.Boolean HasPreviousPage { get; }
+
+        public virtual global::System.Boolean Equals(GetCourses_Courses_PageInfo_PageInfo? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((StartCursor is null && other.StartCursor is null) || StartCursor != null && StartCursor.Equals(other.StartCursor))) && ((EndCursor is null && other.EndCursor is null) || EndCursor != null && EndCursor.Equals(other.EndCursor)) && HasNextPage == other.HasNextPage && HasPreviousPage == other.HasPreviousPage;
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GetCourses_Courses_PageInfo_PageInfo)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (StartCursor != null)
+                {
+                    hash ^= 397 * StartCursor.GetHashCode();
+                }
+
+                if (EndCursor != null)
+                {
+                    hash ^= 397 * EndCursor.GetHashCode();
+                }
+
+                hash ^= 397 * HasNextPage.GetHashCode();
+                hash ^= 397 * HasPreviousPage.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class GetCourses_Courses_Nodes_Instructor_InstructorType : global::System.IEquatable<GetCourses_Courses_Nodes_Instructor_InstructorType>, IGetCourses_Courses_Nodes_Instructor_InstructorType
+    {
+        public GetCourses_Courses_Nodes_Instructor_InstructorType(global::System.Guid id, global::System.String? firstName, global::System.String? lastName, global::System.Double salary)
+        {
+            Id = id;
+            FirstName = firstName;
+            LastName = lastName;
+            Salary = salary;
+        }
+
+        public global::System.Guid Id { get; }
+
+        public global::System.String? FirstName { get; }
+
+        public global::System.String? LastName { get; }
+
+        public global::System.Double Salary { get; }
+
+        public virtual global::System.Boolean Equals(GetCourses_Courses_Nodes_Instructor_InstructorType? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Id.Equals(other.Id)) && ((FirstName is null && other.FirstName is null) || FirstName != null && FirstName.Equals(other.FirstName)) && ((LastName is null && other.LastName is null) || LastName != null && LastName.Equals(other.LastName)) && Salary == other.Salary;
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GetCourses_Courses_Nodes_Instructor_InstructorType)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Id.GetHashCode();
+                if (FirstName != null)
+                {
+                    hash ^= 397 * FirstName.GetHashCode();
+                }
+
+                if (LastName != null)
+                {
+                    hash ^= 397 * LastName.GetHashCode();
+                }
+
+                hash ^= 397 * Salary.GetHashCode();
                 return hash;
             }
         }
@@ -994,43 +1121,102 @@ namespace GraphQLDemo.Client
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
     public interface IGetCoursesResult
     {
-        public global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.IGetCourses_Courses?>? Courses { get; }
+        public global::GraphQLDemo.Client.IGetCourses_Courses? Courses { get; }
     }
 
+    /// <summary>
+    /// A connection to a list of items.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
     public interface IGetCourses_Courses
     {
-        public global::System.String? Name { get; }
+        /// <summary>
+        /// A flattened list of the nodes.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.IGetCourses_Courses_Nodes?>? Nodes { get; }
 
-        public global::GraphQLDemo.Client.IGetCourses_Courses_Instructor Instructor { get; }
+        /// <summary>
+        /// Information to aid in pagination.
+        /// </summary>
+        public global::GraphQLDemo.Client.IGetCourses_Courses_PageInfo PageInfo { get; }
 
-        public global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.IGetCourses_Courses_Students?>? Students { get; }
+        public global::System.Int32 TotalCount { get; }
     }
 
+    /// <summary>
+    /// A connection to a list of items.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
-    public interface IGetCourses_Courses_CourseType : IGetCourses_Courses
+    public interface IGetCourses_Courses_CourseTypeConnection : IGetCourses_Courses
     {
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
-    public interface IGetCourses_Courses_Instructor
-    {
-        public global::System.String? FirstName { get; }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
-    public interface IGetCourses_Courses_Instructor_InstructorType : IGetCourses_Courses_Instructor
-    {
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
-    public interface IGetCourses_Courses_Students
+    public interface IGetCourses_Courses_Nodes
     {
         public global::System.Guid Id { get; }
+
+        public global::System.String? Name { get; }
+
+        public global::GraphQLDemo.Client.Subject Subject { get; }
+
+        public global::GraphQLDemo.Client.IGetCourses_Courses_Nodes_Instructor Instructor { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
-    public interface IGetCourses_Courses_Students_StudentType : IGetCourses_Courses_Students
+    public interface IGetCourses_Courses_Nodes_CourseType : IGetCourses_Courses_Nodes
+    {
+    }
+
+    /// <summary>
+    /// Information about pagination in a connection.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public interface IGetCourses_Courses_PageInfo
+    {
+        /// <summary>
+        /// When paginating backwards, the cursor to continue.
+        /// </summary>
+        public global::System.String? StartCursor { get; }
+
+        /// <summary>
+        /// When paginating forwards, the cursor to continue.
+        /// </summary>
+        public global::System.String? EndCursor { get; }
+
+        /// <summary>
+        /// Indicates whether more edges exist following the set defined by the clients arguments.
+        /// </summary>
+        public global::System.Boolean HasNextPage { get; }
+
+        /// <summary>
+        /// Indicates whether more edges exist prior the set defined by the clients arguments.
+        /// </summary>
+        public global::System.Boolean HasPreviousPage { get; }
+    }
+
+    /// <summary>
+    /// Information about pagination in a connection.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public interface IGetCourses_Courses_PageInfo_PageInfo : IGetCourses_Courses_PageInfo
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public interface IGetCourses_Courses_Nodes_Instructor
+    {
+        public global::System.Guid Id { get; }
+
+        public global::System.String? FirstName { get; }
+
+        public global::System.String? LastName { get; }
+
+        public global::System.Double Salary { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public interface IGetCourses_Courses_Nodes_Instructor_InstructorType : IGetCourses_Courses_Nodes_Instructor
     {
     }
 
@@ -1594,6 +1780,1889 @@ namespace GraphQLDemo.Client
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class CourseTypeFilterInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
+    {
+        private global::StrawberryShake.Serialization.IInputValueFormatter _courseTypeFilterInputFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _comparableGuidOperationFilterInputFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _stringOperationFilterInputFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _subjectOperationFilterInputFormatter = default !;
+        public global::System.String TypeName => "CourseTypeFilterInput";
+        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _courseTypeFilterInputFormatter = serializerResolver.GetInputValueFormatter("CourseTypeFilterInput");
+            _comparableGuidOperationFilterInputFormatter = serializerResolver.GetInputValueFormatter("ComparableGuidOperationFilterInput");
+            _stringOperationFilterInputFormatter = serializerResolver.GetInputValueFormatter("StringOperationFilterInput");
+            _subjectOperationFilterInputFormatter = serializerResolver.GetInputValueFormatter("SubjectOperationFilterInput");
+        }
+
+        public global::System.Object? Format(global::System.Object? runtimeValue)
+        {
+            if (runtimeValue is null)
+            {
+                return null;
+            }
+
+            var input = runtimeValue as global::GraphQLDemo.Client.CourseTypeFilterInput;
+            var inputInfo = runtimeValue as global::GraphQLDemo.Client.State.ICourseTypeFilterInputInfo;
+            if (input is null || inputInfo is null)
+            {
+                throw new global::System.ArgumentException(nameof(runtimeValue));
+            }
+
+            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
+            if (inputInfo.IsAndSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("and", FormatAnd(input.And)));
+            }
+
+            if (inputInfo.IsOrSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("or", FormatOr(input.Or)));
+            }
+
+            if (inputInfo.IsIdSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("id", FormatId(input.Id)));
+            }
+
+            if (inputInfo.IsNameSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("name", FormatName(input.Name)));
+            }
+
+            if (inputInfo.IsSubjectSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("subject", FormatSubject(input.Subject)));
+            }
+
+            if (inputInfo.IsInstructorIdSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("instructorId", FormatInstructorId(input.InstructorId)));
+            }
+
+            if (inputInfo.IsCreatorIdSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("creatorId", FormatCreatorId(input.CreatorId)));
+            }
+
+            return fields;
+        }
+
+        private global::System.Object? FormatAnd(global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.CourseTypeFilterInput>? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                var input_list = new global::System.Collections.Generic.List<global::System.Object?>();
+                foreach (var input_elm in input)
+                {
+                    if (input_elm is null)
+                    {
+                        throw new global::System.ArgumentNullException(nameof(input_elm));
+                    }
+
+                    input_list.Add(_courseTypeFilterInputFormatter.Format(input_elm));
+                }
+
+                return input_list;
+            }
+        }
+
+        private global::System.Object? FormatOr(global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.CourseTypeFilterInput>? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                var input_list = new global::System.Collections.Generic.List<global::System.Object?>();
+                foreach (var input_elm in input)
+                {
+                    if (input_elm is null)
+                    {
+                        throw new global::System.ArgumentNullException(nameof(input_elm));
+                    }
+
+                    input_list.Add(_courseTypeFilterInputFormatter.Format(input_elm));
+                }
+
+                return input_list;
+            }
+        }
+
+        private global::System.Object? FormatId(global::GraphQLDemo.Client.ComparableGuidOperationFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _comparableGuidOperationFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatName(global::GraphQLDemo.Client.StringOperationFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringOperationFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatSubject(global::GraphQLDemo.Client.SubjectOperationFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _subjectOperationFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatInstructorId(global::GraphQLDemo.Client.ComparableGuidOperationFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _comparableGuidOperationFilterInputFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatCreatorId(global::GraphQLDemo.Client.StringOperationFilterInput? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringOperationFilterInputFormatter.Format(input);
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class CourseTypeFilterInput : global::GraphQLDemo.Client.State.ICourseTypeFilterInputInfo, global::System.IEquatable<CourseTypeFilterInput>
+    {
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((CourseTypeFilterInput)obj);
+        }
+
+        public virtual global::System.Boolean Equals(CourseTypeFilterInput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(And, other.And)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Or, other.Or) && ((Id is null && other.Id is null) || Id != null && Id.Equals(other.Id)) && ((Name is null && other.Name is null) || Name != null && Name.Equals(other.Name)) && ((Subject is null && other.Subject is null) || Subject != null && Subject.Equals(other.Subject)) && ((InstructorId is null && other.InstructorId is null) || InstructorId != null && InstructorId.Equals(other.InstructorId)) && ((CreatorId is null && other.CreatorId is null) || CreatorId != null && CreatorId.Equals(other.CreatorId));
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (And != null)
+                {
+                    foreach (var And_elm in And)
+                    {
+                        hash ^= 397 * And_elm.GetHashCode();
+                    }
+                }
+
+                if (Or != null)
+                {
+                    foreach (var Or_elm in Or)
+                    {
+                        hash ^= 397 * Or_elm.GetHashCode();
+                    }
+                }
+
+                if (Id != null)
+                {
+                    hash ^= 397 * Id.GetHashCode();
+                }
+
+                if (Name != null)
+                {
+                    hash ^= 397 * Name.GetHashCode();
+                }
+
+                if (Subject != null)
+                {
+                    hash ^= 397 * Subject.GetHashCode();
+                }
+
+                if (InstructorId != null)
+                {
+                    hash ^= 397 * InstructorId.GetHashCode();
+                }
+
+                if (CreatorId != null)
+                {
+                    hash ^= 397 * CreatorId.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.CourseTypeFilterInput>? _value_and;
+        private global::System.Boolean _set_and;
+        private global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.CourseTypeFilterInput>? _value_or;
+        private global::System.Boolean _set_or;
+        private global::GraphQLDemo.Client.ComparableGuidOperationFilterInput? _value_id;
+        private global::System.Boolean _set_id;
+        private global::GraphQLDemo.Client.StringOperationFilterInput? _value_name;
+        private global::System.Boolean _set_name;
+        private global::GraphQLDemo.Client.SubjectOperationFilterInput? _value_subject;
+        private global::System.Boolean _set_subject;
+        private global::GraphQLDemo.Client.ComparableGuidOperationFilterInput? _value_instructorId;
+        private global::System.Boolean _set_instructorId;
+        private global::GraphQLDemo.Client.StringOperationFilterInput? _value_creatorId;
+        private global::System.Boolean _set_creatorId;
+        public global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.CourseTypeFilterInput>? And
+        {
+            get => _value_and;
+            set
+            {
+                _set_and = true;
+                _value_and = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.ICourseTypeFilterInputInfo.IsAndSet => _set_and;
+        public global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.CourseTypeFilterInput>? Or
+        {
+            get => _value_or;
+            set
+            {
+                _set_or = true;
+                _value_or = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.ICourseTypeFilterInputInfo.IsOrSet => _set_or;
+        public global::GraphQLDemo.Client.ComparableGuidOperationFilterInput? Id
+        {
+            get => _value_id;
+            set
+            {
+                _set_id = true;
+                _value_id = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.ICourseTypeFilterInputInfo.IsIdSet => _set_id;
+        public global::GraphQLDemo.Client.StringOperationFilterInput? Name
+        {
+            get => _value_name;
+            set
+            {
+                _set_name = true;
+                _value_name = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.ICourseTypeFilterInputInfo.IsNameSet => _set_name;
+        public global::GraphQLDemo.Client.SubjectOperationFilterInput? Subject
+        {
+            get => _value_subject;
+            set
+            {
+                _set_subject = true;
+                _value_subject = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.ICourseTypeFilterInputInfo.IsSubjectSet => _set_subject;
+        public global::GraphQLDemo.Client.ComparableGuidOperationFilterInput? InstructorId
+        {
+            get => _value_instructorId;
+            set
+            {
+                _set_instructorId = true;
+                _value_instructorId = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.ICourseTypeFilterInputInfo.IsInstructorIdSet => _set_instructorId;
+        public global::GraphQLDemo.Client.StringOperationFilterInput? CreatorId
+        {
+            get => _value_creatorId;
+            set
+            {
+                _set_creatorId = true;
+                _value_creatorId = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.ICourseTypeFilterInputInfo.IsCreatorIdSet => _set_creatorId;
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class ComparableGuidOperationFilterInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
+    {
+        private global::StrawberryShake.Serialization.IInputValueFormatter _uuidFormatter = default !;
+        public global::System.String TypeName => "ComparableGuidOperationFilterInput";
+        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _uuidFormatter = serializerResolver.GetInputValueFormatter("Uuid");
+        }
+
+        public global::System.Object? Format(global::System.Object? runtimeValue)
+        {
+            if (runtimeValue is null)
+            {
+                return null;
+            }
+
+            var input = runtimeValue as global::GraphQLDemo.Client.ComparableGuidOperationFilterInput;
+            var inputInfo = runtimeValue as global::GraphQLDemo.Client.State.IComparableGuidOperationFilterInputInfo;
+            if (input is null || inputInfo is null)
+            {
+                throw new global::System.ArgumentException(nameof(runtimeValue));
+            }
+
+            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
+            if (inputInfo.IsEqSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("eq", FormatEq(input.Eq)));
+            }
+
+            if (inputInfo.IsNeqSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("neq", FormatNeq(input.Neq)));
+            }
+
+            if (inputInfo.IsInSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("in", FormatIn(input.In)));
+            }
+
+            if (inputInfo.IsNinSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("nin", FormatNin(input.Nin)));
+            }
+
+            if (inputInfo.IsGtSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("gt", FormatGt(input.Gt)));
+            }
+
+            if (inputInfo.IsNgtSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("ngt", FormatNgt(input.Ngt)));
+            }
+
+            if (inputInfo.IsGteSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("gte", FormatGte(input.Gte)));
+            }
+
+            if (inputInfo.IsNgteSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("ngte", FormatNgte(input.Ngte)));
+            }
+
+            if (inputInfo.IsLtSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("lt", FormatLt(input.Lt)));
+            }
+
+            if (inputInfo.IsNltSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("nlt", FormatNlt(input.Nlt)));
+            }
+
+            if (inputInfo.IsLteSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("lte", FormatLte(input.Lte)));
+            }
+
+            if (inputInfo.IsNlteSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("nlte", FormatNlte(input.Nlte)));
+            }
+
+            return fields;
+        }
+
+        private global::System.Object? FormatEq(global::System.Guid? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _uuidFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatNeq(global::System.Guid? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _uuidFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatIn(global::System.Collections.Generic.IReadOnlyList<global::System.Guid>? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                var input_list = new global::System.Collections.Generic.List<global::System.Object?>();
+                foreach (var input_elm in input)
+                {
+                    input_list.Add(_uuidFormatter.Format(input_elm));
+                }
+
+                return input_list;
+            }
+        }
+
+        private global::System.Object? FormatNin(global::System.Collections.Generic.IReadOnlyList<global::System.Guid>? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                var input_list = new global::System.Collections.Generic.List<global::System.Object?>();
+                foreach (var input_elm in input)
+                {
+                    input_list.Add(_uuidFormatter.Format(input_elm));
+                }
+
+                return input_list;
+            }
+        }
+
+        private global::System.Object? FormatGt(global::System.Guid? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _uuidFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatNgt(global::System.Guid? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _uuidFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatGte(global::System.Guid? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _uuidFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatNgte(global::System.Guid? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _uuidFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatLt(global::System.Guid? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _uuidFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatNlt(global::System.Guid? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _uuidFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatLte(global::System.Guid? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _uuidFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatNlte(global::System.Guid? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _uuidFormatter.Format(input);
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class ComparableGuidOperationFilterInput : global::GraphQLDemo.Client.State.IComparableGuidOperationFilterInputInfo, global::System.IEquatable<ComparableGuidOperationFilterInput>
+    {
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((ComparableGuidOperationFilterInput)obj);
+        }
+
+        public virtual global::System.Boolean Equals(ComparableGuidOperationFilterInput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((Eq is null && other.Eq is null) || Eq != null && Eq.Equals(other.Eq))) && ((Neq is null && other.Neq is null) || Neq != null && Neq.Equals(other.Neq)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(In, other.In) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Nin, other.Nin) && ((Gt is null && other.Gt is null) || Gt != null && Gt.Equals(other.Gt)) && ((Ngt is null && other.Ngt is null) || Ngt != null && Ngt.Equals(other.Ngt)) && ((Gte is null && other.Gte is null) || Gte != null && Gte.Equals(other.Gte)) && ((Ngte is null && other.Ngte is null) || Ngte != null && Ngte.Equals(other.Ngte)) && ((Lt is null && other.Lt is null) || Lt != null && Lt.Equals(other.Lt)) && ((Nlt is null && other.Nlt is null) || Nlt != null && Nlt.Equals(other.Nlt)) && ((Lte is null && other.Lte is null) || Lte != null && Lte.Equals(other.Lte)) && ((Nlte is null && other.Nlte is null) || Nlte != null && Nlte.Equals(other.Nlte));
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (Eq != null)
+                {
+                    hash ^= 397 * Eq.GetHashCode();
+                }
+
+                if (Neq != null)
+                {
+                    hash ^= 397 * Neq.GetHashCode();
+                }
+
+                if (In != null)
+                {
+                    foreach (var In_elm in In)
+                    {
+                        hash ^= 397 * In_elm.GetHashCode();
+                    }
+                }
+
+                if (Nin != null)
+                {
+                    foreach (var Nin_elm in Nin)
+                    {
+                        hash ^= 397 * Nin_elm.GetHashCode();
+                    }
+                }
+
+                if (Gt != null)
+                {
+                    hash ^= 397 * Gt.GetHashCode();
+                }
+
+                if (Ngt != null)
+                {
+                    hash ^= 397 * Ngt.GetHashCode();
+                }
+
+                if (Gte != null)
+                {
+                    hash ^= 397 * Gte.GetHashCode();
+                }
+
+                if (Ngte != null)
+                {
+                    hash ^= 397 * Ngte.GetHashCode();
+                }
+
+                if (Lt != null)
+                {
+                    hash ^= 397 * Lt.GetHashCode();
+                }
+
+                if (Nlt != null)
+                {
+                    hash ^= 397 * Nlt.GetHashCode();
+                }
+
+                if (Lte != null)
+                {
+                    hash ^= 397 * Lte.GetHashCode();
+                }
+
+                if (Nlte != null)
+                {
+                    hash ^= 397 * Nlte.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+
+        private global::System.Guid? _value_eq;
+        private global::System.Boolean _set_eq;
+        private global::System.Guid? _value_neq;
+        private global::System.Boolean _set_neq;
+        private global::System.Collections.Generic.IReadOnlyList<global::System.Guid>? _value_in;
+        private global::System.Boolean _set_in;
+        private global::System.Collections.Generic.IReadOnlyList<global::System.Guid>? _value_nin;
+        private global::System.Boolean _set_nin;
+        private global::System.Guid? _value_gt;
+        private global::System.Boolean _set_gt;
+        private global::System.Guid? _value_ngt;
+        private global::System.Boolean _set_ngt;
+        private global::System.Guid? _value_gte;
+        private global::System.Boolean _set_gte;
+        private global::System.Guid? _value_ngte;
+        private global::System.Boolean _set_ngte;
+        private global::System.Guid? _value_lt;
+        private global::System.Boolean _set_lt;
+        private global::System.Guid? _value_nlt;
+        private global::System.Boolean _set_nlt;
+        private global::System.Guid? _value_lte;
+        private global::System.Boolean _set_lte;
+        private global::System.Guid? _value_nlte;
+        private global::System.Boolean _set_nlte;
+        public global::System.Guid? Eq
+        {
+            get => _value_eq;
+            set
+            {
+                _set_eq = true;
+                _value_eq = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.IComparableGuidOperationFilterInputInfo.IsEqSet => _set_eq;
+        public global::System.Guid? Neq
+        {
+            get => _value_neq;
+            set
+            {
+                _set_neq = true;
+                _value_neq = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.IComparableGuidOperationFilterInputInfo.IsNeqSet => _set_neq;
+        public global::System.Collections.Generic.IReadOnlyList<global::System.Guid>? In
+        {
+            get => _value_in;
+            set
+            {
+                _set_in = true;
+                _value_in = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.IComparableGuidOperationFilterInputInfo.IsInSet => _set_in;
+        public global::System.Collections.Generic.IReadOnlyList<global::System.Guid>? Nin
+        {
+            get => _value_nin;
+            set
+            {
+                _set_nin = true;
+                _value_nin = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.IComparableGuidOperationFilterInputInfo.IsNinSet => _set_nin;
+        public global::System.Guid? Gt
+        {
+            get => _value_gt;
+            set
+            {
+                _set_gt = true;
+                _value_gt = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.IComparableGuidOperationFilterInputInfo.IsGtSet => _set_gt;
+        public global::System.Guid? Ngt
+        {
+            get => _value_ngt;
+            set
+            {
+                _set_ngt = true;
+                _value_ngt = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.IComparableGuidOperationFilterInputInfo.IsNgtSet => _set_ngt;
+        public global::System.Guid? Gte
+        {
+            get => _value_gte;
+            set
+            {
+                _set_gte = true;
+                _value_gte = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.IComparableGuidOperationFilterInputInfo.IsGteSet => _set_gte;
+        public global::System.Guid? Ngte
+        {
+            get => _value_ngte;
+            set
+            {
+                _set_ngte = true;
+                _value_ngte = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.IComparableGuidOperationFilterInputInfo.IsNgteSet => _set_ngte;
+        public global::System.Guid? Lt
+        {
+            get => _value_lt;
+            set
+            {
+                _set_lt = true;
+                _value_lt = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.IComparableGuidOperationFilterInputInfo.IsLtSet => _set_lt;
+        public global::System.Guid? Nlt
+        {
+            get => _value_nlt;
+            set
+            {
+                _set_nlt = true;
+                _value_nlt = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.IComparableGuidOperationFilterInputInfo.IsNltSet => _set_nlt;
+        public global::System.Guid? Lte
+        {
+            get => _value_lte;
+            set
+            {
+                _set_lte = true;
+                _value_lte = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.IComparableGuidOperationFilterInputInfo.IsLteSet => _set_lte;
+        public global::System.Guid? Nlte
+        {
+            get => _value_nlte;
+            set
+            {
+                _set_nlte = true;
+                _value_nlte = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.IComparableGuidOperationFilterInputInfo.IsNlteSet => _set_nlte;
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class StringOperationFilterInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
+    {
+        private global::StrawberryShake.Serialization.IInputValueFormatter _stringOperationFilterInputFormatter = default !;
+        private global::StrawberryShake.Serialization.IInputValueFormatter _stringFormatter = default !;
+        public global::System.String TypeName => "StringOperationFilterInput";
+        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _stringOperationFilterInputFormatter = serializerResolver.GetInputValueFormatter("StringOperationFilterInput");
+            _stringFormatter = serializerResolver.GetInputValueFormatter("String");
+        }
+
+        public global::System.Object? Format(global::System.Object? runtimeValue)
+        {
+            if (runtimeValue is null)
+            {
+                return null;
+            }
+
+            var input = runtimeValue as global::GraphQLDemo.Client.StringOperationFilterInput;
+            var inputInfo = runtimeValue as global::GraphQLDemo.Client.State.IStringOperationFilterInputInfo;
+            if (input is null || inputInfo is null)
+            {
+                throw new global::System.ArgumentException(nameof(runtimeValue));
+            }
+
+            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
+            if (inputInfo.IsAndSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("and", FormatAnd(input.And)));
+            }
+
+            if (inputInfo.IsOrSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("or", FormatOr(input.Or)));
+            }
+
+            if (inputInfo.IsEqSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("eq", FormatEq(input.Eq)));
+            }
+
+            if (inputInfo.IsNeqSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("neq", FormatNeq(input.Neq)));
+            }
+
+            if (inputInfo.IsContainsSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("contains", FormatContains(input.Contains)));
+            }
+
+            if (inputInfo.IsNcontainsSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("ncontains", FormatNcontains(input.Ncontains)));
+            }
+
+            if (inputInfo.IsInSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("in", FormatIn(input.In)));
+            }
+
+            if (inputInfo.IsNinSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("nin", FormatNin(input.Nin)));
+            }
+
+            if (inputInfo.IsStartsWithSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("startsWith", FormatStartsWith(input.StartsWith)));
+            }
+
+            if (inputInfo.IsNstartsWithSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("nstartsWith", FormatNstartsWith(input.NstartsWith)));
+            }
+
+            if (inputInfo.IsEndsWithSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("endsWith", FormatEndsWith(input.EndsWith)));
+            }
+
+            if (inputInfo.IsNendsWithSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("nendsWith", FormatNendsWith(input.NendsWith)));
+            }
+
+            return fields;
+        }
+
+        private global::System.Object? FormatAnd(global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.StringOperationFilterInput>? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                var input_list = new global::System.Collections.Generic.List<global::System.Object?>();
+                foreach (var input_elm in input)
+                {
+                    if (input_elm is null)
+                    {
+                        throw new global::System.ArgumentNullException(nameof(input_elm));
+                    }
+
+                    input_list.Add(_stringOperationFilterInputFormatter.Format(input_elm));
+                }
+
+                return input_list;
+            }
+        }
+
+        private global::System.Object? FormatOr(global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.StringOperationFilterInput>? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                var input_list = new global::System.Collections.Generic.List<global::System.Object?>();
+                foreach (var input_elm in input)
+                {
+                    if (input_elm is null)
+                    {
+                        throw new global::System.ArgumentNullException(nameof(input_elm));
+                    }
+
+                    input_list.Add(_stringOperationFilterInputFormatter.Format(input_elm));
+                }
+
+                return input_list;
+            }
+        }
+
+        private global::System.Object? FormatEq(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatNeq(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatContains(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatNcontains(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatIn(global::System.Collections.Generic.IReadOnlyList<global::System.String?>? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                var input_list = new global::System.Collections.Generic.List<global::System.Object?>();
+                foreach (var input_elm in input)
+                {
+                    if (input_elm is null)
+                    {
+                        input_list.Add(input_elm);
+                    }
+                    else
+                    {
+                        input_list.Add(_stringFormatter.Format(input_elm));
+                    }
+                }
+
+                return input_list;
+            }
+        }
+
+        private global::System.Object? FormatNin(global::System.Collections.Generic.IReadOnlyList<global::System.String?>? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                var input_list = new global::System.Collections.Generic.List<global::System.Object?>();
+                foreach (var input_elm in input)
+                {
+                    if (input_elm is null)
+                    {
+                        input_list.Add(input_elm);
+                    }
+                    else
+                    {
+                        input_list.Add(_stringFormatter.Format(input_elm));
+                    }
+                }
+
+                return input_list;
+            }
+        }
+
+        private global::System.Object? FormatStartsWith(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatNstartsWith(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatEndsWith(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatNendsWith(global::System.String? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _stringFormatter.Format(input);
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class StringOperationFilterInput : global::GraphQLDemo.Client.State.IStringOperationFilterInputInfo, global::System.IEquatable<StringOperationFilterInput>
+    {
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((StringOperationFilterInput)obj);
+        }
+
+        public virtual global::System.Boolean Equals(StringOperationFilterInput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(And, other.And)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Or, other.Or) && ((Eq is null && other.Eq is null) || Eq != null && Eq.Equals(other.Eq)) && ((Neq is null && other.Neq is null) || Neq != null && Neq.Equals(other.Neq)) && ((Contains is null && other.Contains is null) || Contains != null && Contains.Equals(other.Contains)) && ((Ncontains is null && other.Ncontains is null) || Ncontains != null && Ncontains.Equals(other.Ncontains)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(In, other.In) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Nin, other.Nin) && ((StartsWith is null && other.StartsWith is null) || StartsWith != null && StartsWith.Equals(other.StartsWith)) && ((NstartsWith is null && other.NstartsWith is null) || NstartsWith != null && NstartsWith.Equals(other.NstartsWith)) && ((EndsWith is null && other.EndsWith is null) || EndsWith != null && EndsWith.Equals(other.EndsWith)) && ((NendsWith is null && other.NendsWith is null) || NendsWith != null && NendsWith.Equals(other.NendsWith));
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (And != null)
+                {
+                    foreach (var And_elm in And)
+                    {
+                        hash ^= 397 * And_elm.GetHashCode();
+                    }
+                }
+
+                if (Or != null)
+                {
+                    foreach (var Or_elm in Or)
+                    {
+                        hash ^= 397 * Or_elm.GetHashCode();
+                    }
+                }
+
+                if (Eq != null)
+                {
+                    hash ^= 397 * Eq.GetHashCode();
+                }
+
+                if (Neq != null)
+                {
+                    hash ^= 397 * Neq.GetHashCode();
+                }
+
+                if (Contains != null)
+                {
+                    hash ^= 397 * Contains.GetHashCode();
+                }
+
+                if (Ncontains != null)
+                {
+                    hash ^= 397 * Ncontains.GetHashCode();
+                }
+
+                if (In != null)
+                {
+                    foreach (var In_elm in In)
+                    {
+                        if (In_elm != null)
+                        {
+                            hash ^= 397 * In_elm.GetHashCode();
+                        }
+                    }
+                }
+
+                if (Nin != null)
+                {
+                    foreach (var Nin_elm in Nin)
+                    {
+                        if (Nin_elm != null)
+                        {
+                            hash ^= 397 * Nin_elm.GetHashCode();
+                        }
+                    }
+                }
+
+                if (StartsWith != null)
+                {
+                    hash ^= 397 * StartsWith.GetHashCode();
+                }
+
+                if (NstartsWith != null)
+                {
+                    hash ^= 397 * NstartsWith.GetHashCode();
+                }
+
+                if (EndsWith != null)
+                {
+                    hash ^= 397 * EndsWith.GetHashCode();
+                }
+
+                if (NendsWith != null)
+                {
+                    hash ^= 397 * NendsWith.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.StringOperationFilterInput>? _value_and;
+        private global::System.Boolean _set_and;
+        private global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.StringOperationFilterInput>? _value_or;
+        private global::System.Boolean _set_or;
+        private global::System.String? _value_eq;
+        private global::System.Boolean _set_eq;
+        private global::System.String? _value_neq;
+        private global::System.Boolean _set_neq;
+        private global::System.String? _value_contains;
+        private global::System.Boolean _set_contains;
+        private global::System.String? _value_ncontains;
+        private global::System.Boolean _set_ncontains;
+        private global::System.Collections.Generic.IReadOnlyList<global::System.String?>? _value_in;
+        private global::System.Boolean _set_in;
+        private global::System.Collections.Generic.IReadOnlyList<global::System.String?>? _value_nin;
+        private global::System.Boolean _set_nin;
+        private global::System.String? _value_startsWith;
+        private global::System.Boolean _set_startsWith;
+        private global::System.String? _value_nstartsWith;
+        private global::System.Boolean _set_nstartsWith;
+        private global::System.String? _value_endsWith;
+        private global::System.Boolean _set_endsWith;
+        private global::System.String? _value_nendsWith;
+        private global::System.Boolean _set_nendsWith;
+        public global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.StringOperationFilterInput>? And
+        {
+            get => _value_and;
+            set
+            {
+                _set_and = true;
+                _value_and = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.IStringOperationFilterInputInfo.IsAndSet => _set_and;
+        public global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.StringOperationFilterInput>? Or
+        {
+            get => _value_or;
+            set
+            {
+                _set_or = true;
+                _value_or = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.IStringOperationFilterInputInfo.IsOrSet => _set_or;
+        public global::System.String? Eq
+        {
+            get => _value_eq;
+            set
+            {
+                _set_eq = true;
+                _value_eq = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.IStringOperationFilterInputInfo.IsEqSet => _set_eq;
+        public global::System.String? Neq
+        {
+            get => _value_neq;
+            set
+            {
+                _set_neq = true;
+                _value_neq = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.IStringOperationFilterInputInfo.IsNeqSet => _set_neq;
+        public global::System.String? Contains
+        {
+            get => _value_contains;
+            set
+            {
+                _set_contains = true;
+                _value_contains = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.IStringOperationFilterInputInfo.IsContainsSet => _set_contains;
+        public global::System.String? Ncontains
+        {
+            get => _value_ncontains;
+            set
+            {
+                _set_ncontains = true;
+                _value_ncontains = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.IStringOperationFilterInputInfo.IsNcontainsSet => _set_ncontains;
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String?>? In
+        {
+            get => _value_in;
+            set
+            {
+                _set_in = true;
+                _value_in = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.IStringOperationFilterInputInfo.IsInSet => _set_in;
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String?>? Nin
+        {
+            get => _value_nin;
+            set
+            {
+                _set_nin = true;
+                _value_nin = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.IStringOperationFilterInputInfo.IsNinSet => _set_nin;
+        public global::System.String? StartsWith
+        {
+            get => _value_startsWith;
+            set
+            {
+                _set_startsWith = true;
+                _value_startsWith = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.IStringOperationFilterInputInfo.IsStartsWithSet => _set_startsWith;
+        public global::System.String? NstartsWith
+        {
+            get => _value_nstartsWith;
+            set
+            {
+                _set_nstartsWith = true;
+                _value_nstartsWith = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.IStringOperationFilterInputInfo.IsNstartsWithSet => _set_nstartsWith;
+        public global::System.String? EndsWith
+        {
+            get => _value_endsWith;
+            set
+            {
+                _set_endsWith = true;
+                _value_endsWith = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.IStringOperationFilterInputInfo.IsEndsWithSet => _set_endsWith;
+        public global::System.String? NendsWith
+        {
+            get => _value_nendsWith;
+            set
+            {
+                _set_nendsWith = true;
+                _value_nendsWith = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.IStringOperationFilterInputInfo.IsNendsWithSet => _set_nendsWith;
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class SubjectOperationFilterInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
+    {
+        private global::StrawberryShake.Serialization.IInputValueFormatter _subjectFormatter = default !;
+        public global::System.String TypeName => "SubjectOperationFilterInput";
+        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _subjectFormatter = serializerResolver.GetInputValueFormatter("Subject");
+        }
+
+        public global::System.Object? Format(global::System.Object? runtimeValue)
+        {
+            if (runtimeValue is null)
+            {
+                return null;
+            }
+
+            var input = runtimeValue as global::GraphQLDemo.Client.SubjectOperationFilterInput;
+            var inputInfo = runtimeValue as global::GraphQLDemo.Client.State.ISubjectOperationFilterInputInfo;
+            if (input is null || inputInfo is null)
+            {
+                throw new global::System.ArgumentException(nameof(runtimeValue));
+            }
+
+            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
+            if (inputInfo.IsEqSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("eq", FormatEq(input.Eq)));
+            }
+
+            if (inputInfo.IsNeqSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("neq", FormatNeq(input.Neq)));
+            }
+
+            if (inputInfo.IsInSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("in", FormatIn(input.In)));
+            }
+
+            if (inputInfo.IsNinSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("nin", FormatNin(input.Nin)));
+            }
+
+            return fields;
+        }
+
+        private global::System.Object? FormatEq(global::GraphQLDemo.Client.Subject? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _subjectFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatNeq(global::GraphQLDemo.Client.Subject? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _subjectFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatIn(global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.Subject>? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                var input_list = new global::System.Collections.Generic.List<global::System.Object?>();
+                foreach (var input_elm in input)
+                {
+                    input_list.Add(_subjectFormatter.Format(input_elm));
+                }
+
+                return input_list;
+            }
+        }
+
+        private global::System.Object? FormatNin(global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.Subject>? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                var input_list = new global::System.Collections.Generic.List<global::System.Object?>();
+                foreach (var input_elm in input)
+                {
+                    input_list.Add(_subjectFormatter.Format(input_elm));
+                }
+
+                return input_list;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class SubjectOperationFilterInput : global::GraphQLDemo.Client.State.ISubjectOperationFilterInputInfo, global::System.IEquatable<SubjectOperationFilterInput>
+    {
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((SubjectOperationFilterInput)obj);
+        }
+
+        public virtual global::System.Boolean Equals(SubjectOperationFilterInput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((Eq is null && other.Eq is null) || Eq != null && Eq.Equals(other.Eq))) && ((Neq is null && other.Neq is null) || Neq != null && Neq.Equals(other.Neq)) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(In, other.In) && global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Nin, other.Nin);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (Eq != null)
+                {
+                    hash ^= 397 * Eq.GetHashCode();
+                }
+
+                if (Neq != null)
+                {
+                    hash ^= 397 * Neq.GetHashCode();
+                }
+
+                if (In != null)
+                {
+                    foreach (var In_elm in In)
+                    {
+                        hash ^= 397 * In_elm.GetHashCode();
+                    }
+                }
+
+                if (Nin != null)
+                {
+                    foreach (var Nin_elm in Nin)
+                    {
+                        hash ^= 397 * Nin_elm.GetHashCode();
+                    }
+                }
+
+                return hash;
+            }
+        }
+
+        private global::GraphQLDemo.Client.Subject? _value_eq;
+        private global::System.Boolean _set_eq;
+        private global::GraphQLDemo.Client.Subject? _value_neq;
+        private global::System.Boolean _set_neq;
+        private global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.Subject>? _value_in;
+        private global::System.Boolean _set_in;
+        private global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.Subject>? _value_nin;
+        private global::System.Boolean _set_nin;
+        public global::GraphQLDemo.Client.Subject? Eq
+        {
+            get => _value_eq;
+            set
+            {
+                _set_eq = true;
+                _value_eq = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.ISubjectOperationFilterInputInfo.IsEqSet => _set_eq;
+        public global::GraphQLDemo.Client.Subject? Neq
+        {
+            get => _value_neq;
+            set
+            {
+                _set_neq = true;
+                _value_neq = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.ISubjectOperationFilterInputInfo.IsNeqSet => _set_neq;
+        public global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.Subject>? In
+        {
+            get => _value_in;
+            set
+            {
+                _set_in = true;
+                _value_in = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.ISubjectOperationFilterInputInfo.IsInSet => _set_in;
+        public global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.Subject>? Nin
+        {
+            get => _value_nin;
+            set
+            {
+                _set_nin = true;
+                _value_nin = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.ISubjectOperationFilterInputInfo.IsNinSet => _set_nin;
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class CourseTypeSortInputInputValueFormatter : global::StrawberryShake.Serialization.IInputObjectFormatter
+    {
+        private global::StrawberryShake.Serialization.IInputValueFormatter _sortEnumTypeFormatter = default !;
+        public global::System.String TypeName => "CourseTypeSortInput";
+        public void Initialize(global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _sortEnumTypeFormatter = serializerResolver.GetInputValueFormatter("SortEnumType");
+        }
+
+        public global::System.Object? Format(global::System.Object? runtimeValue)
+        {
+            if (runtimeValue is null)
+            {
+                return null;
+            }
+
+            var input = runtimeValue as global::GraphQLDemo.Client.CourseTypeSortInput;
+            var inputInfo = runtimeValue as global::GraphQLDemo.Client.State.ICourseTypeSortInputInfo;
+            if (input is null || inputInfo is null)
+            {
+                throw new global::System.ArgumentException(nameof(runtimeValue));
+            }
+
+            var fields = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>>();
+            if (inputInfo.IsNameSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("name", FormatName(input.Name)));
+            }
+
+            if (inputInfo.IsSubjectSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("subject", FormatSubject(input.Subject)));
+            }
+
+            if (inputInfo.IsCreatorIdSet)
+            {
+                fields.Add(new global::System.Collections.Generic.KeyValuePair<global::System.String, global::System.Object?>("creatorId", FormatCreatorId(input.CreatorId)));
+            }
+
+            return fields;
+        }
+
+        private global::System.Object? FormatName(global::GraphQLDemo.Client.SortEnumType? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _sortEnumTypeFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatSubject(global::GraphQLDemo.Client.SortEnumType? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _sortEnumTypeFormatter.Format(input);
+            }
+        }
+
+        private global::System.Object? FormatCreatorId(global::GraphQLDemo.Client.SortEnumType? input)
+        {
+            if (input is null)
+            {
+                return input;
+            }
+            else
+            {
+                return _sortEnumTypeFormatter.Format(input);
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class CourseTypeSortInput : global::GraphQLDemo.Client.State.ICourseTypeSortInputInfo, global::System.IEquatable<CourseTypeSortInput>
+    {
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((CourseTypeSortInput)obj);
+        }
+
+        public virtual global::System.Boolean Equals(CourseTypeSortInput? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((Name is null && other.Name is null) || Name != null && Name.Equals(other.Name))) && ((Subject is null && other.Subject is null) || Subject != null && Subject.Equals(other.Subject)) && ((CreatorId is null && other.CreatorId is null) || CreatorId != null && CreatorId.Equals(other.CreatorId));
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (Name != null)
+                {
+                    hash ^= 397 * Name.GetHashCode();
+                }
+
+                if (Subject != null)
+                {
+                    hash ^= 397 * Subject.GetHashCode();
+                }
+
+                if (CreatorId != null)
+                {
+                    hash ^= 397 * CreatorId.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+
+        private global::GraphQLDemo.Client.SortEnumType? _value_name;
+        private global::System.Boolean _set_name;
+        private global::GraphQLDemo.Client.SortEnumType? _value_subject;
+        private global::System.Boolean _set_subject;
+        private global::GraphQLDemo.Client.SortEnumType? _value_creatorId;
+        private global::System.Boolean _set_creatorId;
+        public global::GraphQLDemo.Client.SortEnumType? Name
+        {
+            get => _value_name;
+            set
+            {
+                _set_name = true;
+                _value_name = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.ICourseTypeSortInputInfo.IsNameSet => _set_name;
+        public global::GraphQLDemo.Client.SortEnumType? Subject
+        {
+            get => _value_subject;
+            set
+            {
+                _set_subject = true;
+                _value_subject = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.ICourseTypeSortInputInfo.IsSubjectSet => _set_subject;
+        public global::GraphQLDemo.Client.SortEnumType? CreatorId
+        {
+            get => _value_creatorId;
+            set
+            {
+                _set_creatorId = true;
+                _value_creatorId = value;
+            }
+        }
+
+        global::System.Boolean global::GraphQLDemo.Client.State.ICourseTypeSortInputInfo.IsCreatorIdSet => _set_creatorId;
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
     public enum Subject
     {
         Mathematics,
@@ -1619,6 +3688,36 @@ namespace GraphQLDemo.Client
             return runtimeValue switch
             {
             Subject.Mathematics => "MATHEMATICS", Subject.Science => "SCIENCE", Subject.History => "HISTORY", _ => throw new global::StrawberryShake.GraphQLClientException()}
+
+            ;
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public enum SortEnumType
+    {
+        Asc,
+        Desc
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class SortEnumTypeSerializer : global::StrawberryShake.Serialization.IInputValueFormatter, global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, SortEnumType>
+    {
+        public global::System.String TypeName => "SortEnumType";
+        public SortEnumType Parse(global::System.String serializedValue)
+        {
+            return serializedValue switch
+            {
+            "ASC" => SortEnumType.Asc, "DESC" => SortEnumType.Desc, _ => throw new global::StrawberryShake.GraphQLClientException()}
+
+            ;
+        }
+
+        public global::System.Object Format(global::System.Object? runtimeValue)
+        {
+            return runtimeValue switch
+            {
+            SortEnumType.Asc => "ASC", SortEnumType.Desc => "DESC", _ => throw new global::StrawberryShake.GraphQLClientException()}
 
             ;
         }
@@ -2156,27 +4255,36 @@ namespace GraphQLDemo.Client
     /// <summary>
     /// Represents the operation service of the GetCourses GraphQL operation
     /// <code>
-    /// query GetCourses {
-    ///   courses {
+    /// query GetCourses($first: Int, $after: String, $last: Int, $before: String, $where: CourseTypeFilterInput, $order: [CourseTypeSortInput!]) {
+    ///   courses(first: $first, last: $last, before: $before, after: $after, order: $order, where: $where) {
     ///     __typename
-    ///     name
-    ///     instructor {
+    ///     nodes {
     ///       __typename
-    ///       firstName
-    ///       ... on InstructorType {
+    ///       id
+    ///       name
+    ///       subject
+    ///       instructor {
+    ///         __typename
+    ///         id
+    ///         firstName
+    ///         lastName
+    ///         salary
+    ///         ... on InstructorType {
+    ///           id
+    ///         }
+    ///       }
+    ///       ... on CourseType {
     ///         id
     ///       }
     ///     }
-    ///     students {
+    ///     pageInfo {
     ///       __typename
-    ///       id
-    ///       ... on StudentType {
-    ///         id
-    ///       }
+    ///       startCursor
+    ///       endCursor
+    ///       hasNextPage
+    ///       hasPreviousPage
     ///     }
-    ///     ... on CourseType {
-    ///       id
-    ///     }
+    ///     totalCount
     ///   }
     /// }
     /// </code>
@@ -2190,8 +4298,8 @@ namespace GraphQLDemo.Client
 
         public static GetCoursesQueryDocument Instance { get; } = new GetCoursesQueryDocument();
         public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
-        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x75, 0x72, 0x73, 0x65, 0x73, 0x20, 0x7b, 0x20, 0x63, 0x6f, 0x75, 0x72, 0x73, 0x65, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x69, 0x6e, 0x73, 0x74, 0x72, 0x75, 0x63, 0x74, 0x6f, 0x72, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x66, 0x69, 0x72, 0x73, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x49, 0x6e, 0x73, 0x74, 0x72, 0x75, 0x63, 0x74, 0x6f, 0x72, 0x54, 0x79, 0x70, 0x65, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x73, 0x74, 0x75, 0x64, 0x65, 0x6e, 0x74, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x69, 0x64, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x53, 0x74, 0x75, 0x64, 0x65, 0x6e, 0x74, 0x54, 0x79, 0x70, 0x65, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x43, 0x6f, 0x75, 0x72, 0x73, 0x65, 0x54, 0x79, 0x70, 0x65, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
-        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "f6e7c7158fdf713cd6f365644f93d6a5");
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x75, 0x72, 0x73, 0x65, 0x73, 0x28, 0x24, 0x66, 0x69, 0x72, 0x73, 0x74, 0x3a, 0x20, 0x49, 0x6e, 0x74, 0x2c, 0x20, 0x24, 0x61, 0x66, 0x74, 0x65, 0x72, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x2c, 0x20, 0x24, 0x6c, 0x61, 0x73, 0x74, 0x3a, 0x20, 0x49, 0x6e, 0x74, 0x2c, 0x20, 0x24, 0x62, 0x65, 0x66, 0x6f, 0x72, 0x65, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x2c, 0x20, 0x24, 0x77, 0x68, 0x65, 0x72, 0x65, 0x3a, 0x20, 0x43, 0x6f, 0x75, 0x72, 0x73, 0x65, 0x54, 0x79, 0x70, 0x65, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x2c, 0x20, 0x24, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x3a, 0x20, 0x5b, 0x43, 0x6f, 0x75, 0x72, 0x73, 0x65, 0x54, 0x79, 0x70, 0x65, 0x53, 0x6f, 0x72, 0x74, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x21, 0x5d, 0x29, 0x20, 0x7b, 0x20, 0x63, 0x6f, 0x75, 0x72, 0x73, 0x65, 0x73, 0x28, 0x66, 0x69, 0x72, 0x73, 0x74, 0x3a, 0x20, 0x24, 0x66, 0x69, 0x72, 0x73, 0x74, 0x2c, 0x20, 0x6c, 0x61, 0x73, 0x74, 0x3a, 0x20, 0x24, 0x6c, 0x61, 0x73, 0x74, 0x2c, 0x20, 0x62, 0x65, 0x66, 0x6f, 0x72, 0x65, 0x3a, 0x20, 0x24, 0x62, 0x65, 0x66, 0x6f, 0x72, 0x65, 0x2c, 0x20, 0x61, 0x66, 0x74, 0x65, 0x72, 0x3a, 0x20, 0x24, 0x61, 0x66, 0x74, 0x65, 0x72, 0x2c, 0x20, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x3a, 0x20, 0x24, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x2c, 0x20, 0x77, 0x68, 0x65, 0x72, 0x65, 0x3a, 0x20, 0x24, 0x77, 0x68, 0x65, 0x72, 0x65, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x6e, 0x6f, 0x64, 0x65, 0x73, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x69, 0x64, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x73, 0x75, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x20, 0x69, 0x6e, 0x73, 0x74, 0x72, 0x75, 0x63, 0x74, 0x6f, 0x72, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x69, 0x64, 0x20, 0x66, 0x69, 0x72, 0x73, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x6c, 0x61, 0x73, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x73, 0x61, 0x6c, 0x61, 0x72, 0x79, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x49, 0x6e, 0x73, 0x74, 0x72, 0x75, 0x63, 0x74, 0x6f, 0x72, 0x54, 0x79, 0x70, 0x65, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x43, 0x6f, 0x75, 0x72, 0x73, 0x65, 0x54, 0x79, 0x70, 0x65, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x70, 0x61, 0x67, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x73, 0x74, 0x61, 0x72, 0x74, 0x43, 0x75, 0x72, 0x73, 0x6f, 0x72, 0x20, 0x65, 0x6e, 0x64, 0x43, 0x75, 0x72, 0x73, 0x6f, 0x72, 0x20, 0x68, 0x61, 0x73, 0x4e, 0x65, 0x78, 0x74, 0x50, 0x61, 0x67, 0x65, 0x20, 0x68, 0x61, 0x73, 0x50, 0x72, 0x65, 0x76, 0x69, 0x6f, 0x75, 0x73, 0x50, 0x61, 0x67, 0x65, 0x20, 0x7d, 0x20, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "888d1b0e180ac5776f6855f7bfa0b986");
         public override global::System.String ToString()
         {
 #if NETSTANDARD2_0
@@ -2205,27 +4313,36 @@ namespace GraphQLDemo.Client
     /// <summary>
     /// Represents the operation service of the GetCourses GraphQL operation
     /// <code>
-    /// query GetCourses {
-    ///   courses {
+    /// query GetCourses($first: Int, $after: String, $last: Int, $before: String, $where: CourseTypeFilterInput, $order: [CourseTypeSortInput!]) {
+    ///   courses(first: $first, last: $last, before: $before, after: $after, order: $order, where: $where) {
     ///     __typename
-    ///     name
-    ///     instructor {
+    ///     nodes {
     ///       __typename
-    ///       firstName
-    ///       ... on InstructorType {
+    ///       id
+    ///       name
+    ///       subject
+    ///       instructor {
+    ///         __typename
+    ///         id
+    ///         firstName
+    ///         lastName
+    ///         salary
+    ///         ... on InstructorType {
+    ///           id
+    ///         }
+    ///       }
+    ///       ... on CourseType {
     ///         id
     ///       }
     ///     }
-    ///     students {
+    ///     pageInfo {
     ///       __typename
-    ///       id
-    ///       ... on StudentType {
-    ///         id
-    ///       }
+    ///       startCursor
+    ///       endCursor
+    ///       hasNextPage
+    ///       hasPreviousPage
     ///     }
-    ///     ... on CourseType {
-    ///       id
-    ///     }
+    ///     totalCount
     ///   }
     /// }
     /// </code>
@@ -2234,64 +4351,171 @@ namespace GraphQLDemo.Client
     public partial class GetCoursesQuery : global::GraphQLDemo.Client.IGetCoursesQuery
     {
         private readonly global::StrawberryShake.IOperationExecutor<IGetCoursesResult> _operationExecutor;
-        public GetCoursesQuery(global::StrawberryShake.IOperationExecutor<IGetCoursesResult> operationExecutor)
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _intFormatter;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _stringFormatter;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _courseTypeFilterInputFormatter;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _courseTypeSortInputFormatter;
+        public GetCoursesQuery(global::StrawberryShake.IOperationExecutor<IGetCoursesResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
         {
             _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
+            _intFormatter = serializerResolver.GetInputValueFormatter("Int");
+            _stringFormatter = serializerResolver.GetInputValueFormatter("String");
+            _courseTypeFilterInputFormatter = serializerResolver.GetInputValueFormatter("CourseTypeFilterInput");
+            _courseTypeSortInputFormatter = serializerResolver.GetInputValueFormatter("CourseTypeSortInput");
         }
 
         global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IGetCoursesResult);
-        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetCoursesResult>> ExecuteAsync(global::System.Threading.CancellationToken cancellationToken = default)
+        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetCoursesResult>> ExecuteAsync(global::System.Int32? first, global::System.String? after, global::System.Int32? last, global::System.String? before, global::GraphQLDemo.Client.CourseTypeFilterInput? @where, global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.CourseTypeSortInput>? order, global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var request = CreateRequest();
+            var request = CreateRequest(first, after, last, before, @where, order);
             return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
         }
 
-        public global::System.IObservable<global::StrawberryShake.IOperationResult<IGetCoursesResult>> Watch(global::StrawberryShake.ExecutionStrategy? strategy = null)
+        public global::System.IObservable<global::StrawberryShake.IOperationResult<IGetCoursesResult>> Watch(global::System.Int32? first, global::System.String? after, global::System.Int32? last, global::System.String? before, global::GraphQLDemo.Client.CourseTypeFilterInput? @where, global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.CourseTypeSortInput>? order, global::StrawberryShake.ExecutionStrategy? strategy = null)
         {
-            var request = CreateRequest();
+            var request = CreateRequest(first, after, last, before, @where, order);
             return _operationExecutor.Watch(request, strategy);
         }
 
-        private global::StrawberryShake.OperationRequest CreateRequest()
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Int32? first, global::System.String? after, global::System.Int32? last, global::System.String? before, global::GraphQLDemo.Client.CourseTypeFilterInput? @where, global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.CourseTypeSortInput>? order)
         {
-            return CreateRequest(null);
+            var variables = new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>();
+            variables.Add("first", FormatFirst(first));
+            variables.Add("after", FormatAfter(after));
+            variables.Add("last", FormatLast(last));
+            variables.Add("before", FormatBefore(before));
+            variables.Add("where", FormatWhere(@where));
+            variables.Add("order", FormatOrder(order));
+            return CreateRequest(variables);
         }
 
         private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
         {
-            return new global::StrawberryShake.OperationRequest(id: GetCoursesQueryDocument.Instance.Hash.Value, name: "GetCourses", document: GetCoursesQueryDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default);
+            return new global::StrawberryShake.OperationRequest(id: GetCoursesQueryDocument.Instance.Hash.Value, name: "GetCourses", document: GetCoursesQueryDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default, variables: variables);
+        }
+
+        private global::System.Object? FormatFirst(global::System.Int32? value)
+        {
+            if (value is null)
+            {
+                return value;
+            }
+            else
+            {
+                return _intFormatter.Format(value);
+            }
+        }
+
+        private global::System.Object? FormatAfter(global::System.String? value)
+        {
+            if (value is null)
+            {
+                return value;
+            }
+            else
+            {
+                return _stringFormatter.Format(value);
+            }
+        }
+
+        private global::System.Object? FormatLast(global::System.Int32? value)
+        {
+            if (value is null)
+            {
+                return value;
+            }
+            else
+            {
+                return _intFormatter.Format(value);
+            }
+        }
+
+        private global::System.Object? FormatBefore(global::System.String? value)
+        {
+            if (value is null)
+            {
+                return value;
+            }
+            else
+            {
+                return _stringFormatter.Format(value);
+            }
+        }
+
+        private global::System.Object? FormatWhere(global::GraphQLDemo.Client.CourseTypeFilterInput? value)
+        {
+            if (value is null)
+            {
+                return value;
+            }
+            else
+            {
+                return _courseTypeFilterInputFormatter.Format(value);
+            }
+        }
+
+        private global::System.Object? FormatOrder(global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.CourseTypeSortInput>? value)
+        {
+            if (value is null)
+            {
+                return value;
+            }
+            else
+            {
+                var value_list = new global::System.Collections.Generic.List<global::System.Object?>();
+                foreach (var value_elm in value)
+                {
+                    if (value_elm is null)
+                    {
+                        throw new global::System.ArgumentNullException(nameof(value_elm));
+                    }
+
+                    value_list.Add(_courseTypeSortInputFormatter.Format(value_elm));
+                }
+
+                return value_list;
+            }
         }
 
         global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
         {
-            return CreateRequest();
+            return CreateRequest(variables!);
         }
     }
 
     /// <summary>
     /// Represents the operation service of the GetCourses GraphQL operation
     /// <code>
-    /// query GetCourses {
-    ///   courses {
+    /// query GetCourses($first: Int, $after: String, $last: Int, $before: String, $where: CourseTypeFilterInput, $order: [CourseTypeSortInput!]) {
+    ///   courses(first: $first, last: $last, before: $before, after: $after, order: $order, where: $where) {
     ///     __typename
-    ///     name
-    ///     instructor {
+    ///     nodes {
     ///       __typename
-    ///       firstName
-    ///       ... on InstructorType {
+    ///       id
+    ///       name
+    ///       subject
+    ///       instructor {
+    ///         __typename
+    ///         id
+    ///         firstName
+    ///         lastName
+    ///         salary
+    ///         ... on InstructorType {
+    ///           id
+    ///         }
+    ///       }
+    ///       ... on CourseType {
     ///         id
     ///       }
     ///     }
-    ///     students {
+    ///     pageInfo {
     ///       __typename
-    ///       id
-    ///       ... on StudentType {
-    ///         id
-    ///       }
+    ///       startCursor
+    ///       endCursor
+    ///       hasNextPage
+    ///       hasPreviousPage
     ///     }
-    ///     ... on CourseType {
-    ///       id
-    ///     }
+    ///     totalCount
     ///   }
     /// }
     /// </code>
@@ -2299,8 +4523,8 @@ namespace GraphQLDemo.Client
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
     public interface IGetCoursesQuery : global::StrawberryShake.IOperationRequestFactory
     {
-        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetCoursesResult>> ExecuteAsync(global::System.Threading.CancellationToken cancellationToken = default);
-        global::System.IObservable<global::StrawberryShake.IOperationResult<IGetCoursesResult>> Watch(global::StrawberryShake.ExecutionStrategy? strategy = null);
+        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetCoursesResult>> ExecuteAsync(global::System.Int32? first, global::System.String? after, global::System.Int32? last, global::System.String? before, global::GraphQLDemo.Client.CourseTypeFilterInput? @where, global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.CourseTypeSortInput>? order, global::System.Threading.CancellationToken cancellationToken = default);
+        global::System.IObservable<global::StrawberryShake.IOperationResult<IGetCoursesResult>> Watch(global::System.Int32? first, global::System.String? after, global::System.Int32? last, global::System.String? before, global::GraphQLDemo.Client.CourseTypeFilterInput? @where, global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.CourseTypeSortInput>? order, global::StrawberryShake.ExecutionStrategy? strategy = null);
     }
 
     /// <summary>
@@ -2699,12 +4923,13 @@ namespace GraphQLDemo.Client.State
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
     public partial class CourseTypeEntity
     {
-        public CourseTypeEntity(global::System.Guid id = default !, global::System.String? name = default !, global::StrawberryShake.EntityId instructor = default !, global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId?>? students = default !)
+        public CourseTypeEntity(global::System.Guid id = default !, global::System.String? name = default !, global::StrawberryShake.EntityId instructor = default !, global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId?>? students = default !, global::GraphQLDemo.Client.Subject subject = default !)
         {
             Id = id;
             Name = name;
             Instructor = instructor;
             Students = students;
+            Subject = subject;
         }
 
         public global::System.Guid Id { get; }
@@ -2714,17 +4939,28 @@ namespace GraphQLDemo.Client.State
         public global::StrawberryShake.EntityId Instructor { get; }
 
         public global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId?>? Students { get; }
+
+        public global::GraphQLDemo.Client.Subject Subject { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
     public partial class InstructorTypeEntity
     {
-        public InstructorTypeEntity(global::System.String? firstName = default !)
+        public InstructorTypeEntity(global::System.String? firstName = default !, global::System.Guid id = default !, global::System.String? lastName = default !, global::System.Double salary = default !)
         {
             FirstName = firstName;
+            Id = id;
+            LastName = lastName;
+            Salary = salary;
         }
 
         public global::System.String? FirstName { get; }
+
+        public global::System.Guid Id { get; }
+
+        public global::System.String? LastName { get; }
+
+        public global::System.Double Salary { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
@@ -3150,11 +5386,13 @@ namespace GraphQLDemo.Client.State
     public partial class GetCoursesResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::GraphQLDemo.Client.GetCoursesResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
-        private readonly global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.CourseTypeEntity, GetCourses_Courses_CourseType> _getCourses_Courses_CourseTypeFromCourseTypeEntityMapper;
-        public GetCoursesResultFactory(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.CourseTypeEntity, GetCourses_Courses_CourseType> getCourses_Courses_CourseTypeFromCourseTypeEntityMapper)
+        private readonly global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.CourseTypeEntity, GetCourses_Courses_Nodes_CourseType> _getCourses_Courses_Nodes_CourseTypeFromCourseTypeEntityMapper;
+        private readonly global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.InstructorTypeEntity, GetCourses_Courses_Nodes_Instructor_InstructorType> _getCourses_Courses_Nodes_Instructor_InstructorTypeFromInstructorTypeEntityMapper;
+        public GetCoursesResultFactory(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.CourseTypeEntity, GetCourses_Courses_Nodes_CourseType> getCourses_Courses_Nodes_CourseTypeFromCourseTypeEntityMapper, global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.InstructorTypeEntity, GetCourses_Courses_Nodes_Instructor_InstructorType> getCourses_Courses_Nodes_Instructor_InstructorTypeFromInstructorTypeEntityMapper)
         {
             _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
-            _getCourses_Courses_CourseTypeFromCourseTypeEntityMapper = getCourses_Courses_CourseTypeFromCourseTypeEntityMapper ?? throw new global::System.ArgumentNullException(nameof(getCourses_Courses_CourseTypeFromCourseTypeEntityMapper));
+            _getCourses_Courses_Nodes_CourseTypeFromCourseTypeEntityMapper = getCourses_Courses_Nodes_CourseTypeFromCourseTypeEntityMapper ?? throw new global::System.ArgumentNullException(nameof(getCourses_Courses_Nodes_CourseTypeFromCourseTypeEntityMapper));
+            _getCourses_Courses_Nodes_Instructor_InstructorTypeFromInstructorTypeEntityMapper = getCourses_Courses_Nodes_Instructor_InstructorTypeFromInstructorTypeEntityMapper ?? throw new global::System.ArgumentNullException(nameof(getCourses_Courses_Nodes_Instructor_InstructorTypeFromInstructorTypeEntityMapper));
         }
 
         global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::GraphQLDemo.Client.IGetCoursesResult);
@@ -3167,29 +5405,49 @@ namespace GraphQLDemo.Client.State
 
             if (dataInfo is GetCoursesResultInfo info)
             {
-                return new GetCoursesResult(MapIGetCourses_CoursesArray(info.Courses, snapshot));
+                return new GetCoursesResult(MapIGetCourses_Courses(info.Courses, snapshot));
             }
 
             throw new global::System.ArgumentException("GetCoursesResultInfo expected.");
         }
 
-        private global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.IGetCourses_Courses?>? MapIGetCourses_CoursesArray(global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId?>? list, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        private global::GraphQLDemo.Client.IGetCourses_Courses? MapIGetCourses_Courses(global::GraphQLDemo.Client.State.CourseTypeConnectionData? data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (data is null)
+            {
+                return null;
+            }
+
+            IGetCourses_Courses returnValue = default !;
+            if (data?.__typename.Equals("CourseTypeConnection", global::System.StringComparison.Ordinal) ?? false)
+            {
+                returnValue = new GetCourses_Courses_CourseTypeConnection(MapIGetCourses_Courses_NodesArray(data.Nodes, snapshot), MapNonNullableIGetCourses_Courses_PageInfo(data.PageInfo ?? throw new global::System.ArgumentNullException(), snapshot), data.TotalCount ?? throw new global::System.ArgumentNullException());
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.IGetCourses_Courses_Nodes?>? MapIGetCourses_Courses_NodesArray(global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId?>? list, global::StrawberryShake.IEntityStoreSnapshot snapshot)
         {
             if (list is null)
             {
                 return null;
             }
 
-            var courseTypes = new global::System.Collections.Generic.List<global::GraphQLDemo.Client.IGetCourses_Courses?>();
+            var courseTypes = new global::System.Collections.Generic.List<global::GraphQLDemo.Client.IGetCourses_Courses_Nodes?>();
             foreach (global::StrawberryShake.EntityId? child in list)
             {
-                courseTypes.Add(MapIGetCourses_Courses(child, snapshot));
+                courseTypes.Add(MapIGetCourses_Courses_Nodes(child, snapshot));
             }
 
             return courseTypes;
         }
 
-        private global::GraphQLDemo.Client.IGetCourses_Courses? MapIGetCourses_Courses(global::StrawberryShake.EntityId? entityId, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        private global::GraphQLDemo.Client.IGetCourses_Courses_Nodes? MapIGetCourses_Courses_Nodes(global::StrawberryShake.EntityId? entityId, global::StrawberryShake.IEntityStoreSnapshot snapshot)
         {
             if (entityId is null)
             {
@@ -3198,10 +5456,35 @@ namespace GraphQLDemo.Client.State
 
             if (entityId.Value.Name.Equals("CourseType", global::System.StringComparison.Ordinal))
             {
-                return _getCourses_Courses_CourseTypeFromCourseTypeEntityMapper.Map(snapshot.GetEntity<global::GraphQLDemo.Client.State.CourseTypeEntity>(entityId.Value) ?? throw new global::StrawberryShake.GraphQLClientException());
+                return _getCourses_Courses_Nodes_CourseTypeFromCourseTypeEntityMapper.Map(snapshot.GetEntity<global::GraphQLDemo.Client.State.CourseTypeEntity>(entityId.Value) ?? throw new global::StrawberryShake.GraphQLClientException());
             }
 
             throw new global::System.NotSupportedException();
+        }
+
+        private global::GraphQLDemo.Client.IGetCourses_Courses_Nodes_Instructor MapNonNullableIGetCourses_Courses_Nodes_Instructor(global::StrawberryShake.EntityId entityId, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (entityId.Name.Equals("InstructorType", global::System.StringComparison.Ordinal))
+            {
+                return _getCourses_Courses_Nodes_Instructor_InstructorTypeFromInstructorTypeEntityMapper.Map(snapshot.GetEntity<global::GraphQLDemo.Client.State.InstructorTypeEntity>(entityId) ?? throw new global::StrawberryShake.GraphQLClientException());
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::GraphQLDemo.Client.IGetCourses_Courses_PageInfo MapNonNullableIGetCourses_Courses_PageInfo(global::GraphQLDemo.Client.State.PageInfoData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IGetCourses_Courses_PageInfo returnValue = default !;
+            if (data.__typename.Equals("PageInfo", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new GetCourses_Courses_PageInfo_PageInfo(data.StartCursor, data.EndCursor, data.HasNextPage ?? throw new global::System.ArgumentNullException(), data.HasPreviousPage ?? throw new global::System.ArgumentNullException());
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
         }
 
         global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
@@ -3215,14 +5498,14 @@ namespace GraphQLDemo.Client.State
     {
         private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
         private readonly global::System.UInt64 _version;
-        public GetCoursesResultInfo(global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId?>? courses, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
+        public GetCoursesResultInfo(global::GraphQLDemo.Client.State.CourseTypeConnectionData? courses, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
         {
             Courses = courses;
             _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
             _version = version;
         }
 
-        public global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId?>? Courses { get; }
+        public global::GraphQLDemo.Client.State.CourseTypeConnectionData? Courses { get; }
 
         public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
         public global::System.UInt64 Version => _version;
@@ -3233,64 +5516,31 @@ namespace GraphQLDemo.Client.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
-    public partial class GetCourses_Courses_CourseTypeFromCourseTypeEntityMapper : global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.CourseTypeEntity, GetCourses_Courses_CourseType>
+    public partial class GetCourses_Courses_Nodes_CourseTypeFromCourseTypeEntityMapper : global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.CourseTypeEntity, GetCourses_Courses_Nodes_CourseType>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
-        private readonly global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.InstructorTypeEntity, GetCourses_Courses_Instructor_InstructorType> _getCourses_Courses_Instructor_InstructorTypeFromInstructorTypeEntityMapper;
-        private readonly global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.StudentTypeEntity, GetCourses_Courses_Students_StudentType> _getCourses_Courses_Students_StudentTypeFromStudentTypeEntityMapper;
-        public GetCourses_Courses_CourseTypeFromCourseTypeEntityMapper(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.InstructorTypeEntity, GetCourses_Courses_Instructor_InstructorType> getCourses_Courses_Instructor_InstructorTypeFromInstructorTypeEntityMapper, global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.StudentTypeEntity, GetCourses_Courses_Students_StudentType> getCourses_Courses_Students_StudentTypeFromStudentTypeEntityMapper)
+        private readonly global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.InstructorTypeEntity, GetCourses_Courses_Nodes_Instructor_InstructorType> _getCourses_Courses_Nodes_Instructor_InstructorTypeFromInstructorTypeEntityMapper;
+        public GetCourses_Courses_Nodes_CourseTypeFromCourseTypeEntityMapper(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.InstructorTypeEntity, GetCourses_Courses_Nodes_Instructor_InstructorType> getCourses_Courses_Nodes_Instructor_InstructorTypeFromInstructorTypeEntityMapper)
         {
             _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
-            _getCourses_Courses_Instructor_InstructorTypeFromInstructorTypeEntityMapper = getCourses_Courses_Instructor_InstructorTypeFromInstructorTypeEntityMapper ?? throw new global::System.ArgumentNullException(nameof(getCourses_Courses_Instructor_InstructorTypeFromInstructorTypeEntityMapper));
-            _getCourses_Courses_Students_StudentTypeFromStudentTypeEntityMapper = getCourses_Courses_Students_StudentTypeFromStudentTypeEntityMapper ?? throw new global::System.ArgumentNullException(nameof(getCourses_Courses_Students_StudentTypeFromStudentTypeEntityMapper));
+            _getCourses_Courses_Nodes_Instructor_InstructorTypeFromInstructorTypeEntityMapper = getCourses_Courses_Nodes_Instructor_InstructorTypeFromInstructorTypeEntityMapper ?? throw new global::System.ArgumentNullException(nameof(getCourses_Courses_Nodes_Instructor_InstructorTypeFromInstructorTypeEntityMapper));
         }
 
-        public GetCourses_Courses_CourseType Map(global::GraphQLDemo.Client.State.CourseTypeEntity entity, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        public GetCourses_Courses_Nodes_CourseType Map(global::GraphQLDemo.Client.State.CourseTypeEntity entity, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
         {
             if (snapshot is null)
             {
                 snapshot = _entityStore.CurrentSnapshot;
             }
 
-            return new GetCourses_Courses_CourseType(entity.Name, MapNonNullableIGetCourses_Courses_Instructor(entity.Instructor, snapshot), MapIGetCourses_Courses_StudentsArray(entity.Students, snapshot));
+            return new GetCourses_Courses_Nodes_CourseType(entity.Id, entity.Name, entity.Subject, MapNonNullableIGetCourses_Courses_Nodes_Instructor(entity.Instructor, snapshot));
         }
 
-        private global::GraphQLDemo.Client.IGetCourses_Courses_Instructor MapNonNullableIGetCourses_Courses_Instructor(global::StrawberryShake.EntityId entityId, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        private global::GraphQLDemo.Client.IGetCourses_Courses_Nodes_Instructor MapNonNullableIGetCourses_Courses_Nodes_Instructor(global::StrawberryShake.EntityId entityId, global::StrawberryShake.IEntityStoreSnapshot snapshot)
         {
             if (entityId.Name.Equals("InstructorType", global::System.StringComparison.Ordinal))
             {
-                return _getCourses_Courses_Instructor_InstructorTypeFromInstructorTypeEntityMapper.Map(snapshot.GetEntity<global::GraphQLDemo.Client.State.InstructorTypeEntity>(entityId) ?? throw new global::StrawberryShake.GraphQLClientException());
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-
-        private global::System.Collections.Generic.IReadOnlyList<global::GraphQLDemo.Client.IGetCourses_Courses_Students?>? MapIGetCourses_Courses_StudentsArray(global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId?>? list, global::StrawberryShake.IEntityStoreSnapshot snapshot)
-        {
-            if (list is null)
-            {
-                return null;
-            }
-
-            var studentTypes = new global::System.Collections.Generic.List<global::GraphQLDemo.Client.IGetCourses_Courses_Students?>();
-            foreach (global::StrawberryShake.EntityId? child in list)
-            {
-                studentTypes.Add(MapIGetCourses_Courses_Students(child, snapshot));
-            }
-
-            return studentTypes;
-        }
-
-        private global::GraphQLDemo.Client.IGetCourses_Courses_Students? MapIGetCourses_Courses_Students(global::StrawberryShake.EntityId? entityId, global::StrawberryShake.IEntityStoreSnapshot snapshot)
-        {
-            if (entityId is null)
-            {
-                return null;
-            }
-
-            if (entityId.Value.Name.Equals("StudentType", global::System.StringComparison.Ordinal))
-            {
-                return _getCourses_Courses_Students_StudentTypeFromStudentTypeEntityMapper.Map(snapshot.GetEntity<global::GraphQLDemo.Client.State.StudentTypeEntity>(entityId.Value) ?? throw new global::StrawberryShake.GraphQLClientException());
+                return _getCourses_Courses_Nodes_Instructor_InstructorTypeFromInstructorTypeEntityMapper.Map(snapshot.GetEntity<global::GraphQLDemo.Client.State.InstructorTypeEntity>(entityId) ?? throw new global::StrawberryShake.GraphQLClientException());
             }
 
             throw new global::System.NotSupportedException();
@@ -3298,42 +5548,22 @@ namespace GraphQLDemo.Client.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
-    public partial class GetCourses_Courses_Instructor_InstructorTypeFromInstructorTypeEntityMapper : global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.InstructorTypeEntity, GetCourses_Courses_Instructor_InstructorType>
+    public partial class GetCourses_Courses_Nodes_Instructor_InstructorTypeFromInstructorTypeEntityMapper : global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.InstructorTypeEntity, GetCourses_Courses_Nodes_Instructor_InstructorType>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
-        public GetCourses_Courses_Instructor_InstructorTypeFromInstructorTypeEntityMapper(global::StrawberryShake.IEntityStore entityStore)
+        public GetCourses_Courses_Nodes_Instructor_InstructorTypeFromInstructorTypeEntityMapper(global::StrawberryShake.IEntityStore entityStore)
         {
             _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
         }
 
-        public GetCourses_Courses_Instructor_InstructorType Map(global::GraphQLDemo.Client.State.InstructorTypeEntity entity, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        public GetCourses_Courses_Nodes_Instructor_InstructorType Map(global::GraphQLDemo.Client.State.InstructorTypeEntity entity, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
         {
             if (snapshot is null)
             {
                 snapshot = _entityStore.CurrentSnapshot;
             }
 
-            return new GetCourses_Courses_Instructor_InstructorType(entity.FirstName);
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
-    public partial class GetCourses_Courses_Students_StudentTypeFromStudentTypeEntityMapper : global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.StudentTypeEntity, GetCourses_Courses_Students_StudentType>
-    {
-        private readonly global::StrawberryShake.IEntityStore _entityStore;
-        public GetCourses_Courses_Students_StudentTypeFromStudentTypeEntityMapper(global::StrawberryShake.IEntityStore entityStore)
-        {
-            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
-        }
-
-        public GetCourses_Courses_Students_StudentType Map(global::GraphQLDemo.Client.State.StudentTypeEntity entity, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
-        {
-            if (snapshot is null)
-            {
-                snapshot = _entityStore.CurrentSnapshot;
-            }
-
-            return new GetCourses_Courses_Students_StudentType(entity.Id);
+            return new GetCourses_Courses_Nodes_Instructor_InstructorType(entity.Id, entity.FirstName, entity.LastName, entity.Salary);
         }
     }
 
@@ -3578,6 +5808,102 @@ namespace GraphQLDemo.Client.State
         global::System.Boolean IsSubjectSet { get; }
 
         global::System.Boolean IsInstructorIdSet { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    internal interface ICourseTypeFilterInputInfo
+    {
+        global::System.Boolean IsAndSet { get; }
+
+        global::System.Boolean IsOrSet { get; }
+
+        global::System.Boolean IsIdSet { get; }
+
+        global::System.Boolean IsNameSet { get; }
+
+        global::System.Boolean IsSubjectSet { get; }
+
+        global::System.Boolean IsInstructorIdSet { get; }
+
+        global::System.Boolean IsCreatorIdSet { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    internal interface IComparableGuidOperationFilterInputInfo
+    {
+        global::System.Boolean IsEqSet { get; }
+
+        global::System.Boolean IsNeqSet { get; }
+
+        global::System.Boolean IsInSet { get; }
+
+        global::System.Boolean IsNinSet { get; }
+
+        global::System.Boolean IsGtSet { get; }
+
+        global::System.Boolean IsNgtSet { get; }
+
+        global::System.Boolean IsGteSet { get; }
+
+        global::System.Boolean IsNgteSet { get; }
+
+        global::System.Boolean IsLtSet { get; }
+
+        global::System.Boolean IsNltSet { get; }
+
+        global::System.Boolean IsLteSet { get; }
+
+        global::System.Boolean IsNlteSet { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    internal interface IStringOperationFilterInputInfo
+    {
+        global::System.Boolean IsAndSet { get; }
+
+        global::System.Boolean IsOrSet { get; }
+
+        global::System.Boolean IsEqSet { get; }
+
+        global::System.Boolean IsNeqSet { get; }
+
+        global::System.Boolean IsContainsSet { get; }
+
+        global::System.Boolean IsNcontainsSet { get; }
+
+        global::System.Boolean IsInSet { get; }
+
+        global::System.Boolean IsNinSet { get; }
+
+        global::System.Boolean IsStartsWithSet { get; }
+
+        global::System.Boolean IsNstartsWithSet { get; }
+
+        global::System.Boolean IsEndsWithSet { get; }
+
+        global::System.Boolean IsNendsWithSet { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    internal interface ISubjectOperationFilterInputInfo
+    {
+        global::System.Boolean IsEqSet { get; }
+
+        global::System.Boolean IsNeqSet { get; }
+
+        global::System.Boolean IsInSet { get; }
+
+        global::System.Boolean IsNinSet { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    internal interface ICourseTypeSortInputInfo
+    {
+        global::System.Boolean IsNameSet { get; }
+
+        global::System.Boolean IsSubjectSet { get; }
+
+        global::System.Boolean IsCreatorIdSet { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
@@ -3980,11 +6306,11 @@ namespace GraphQLDemo.Client.State
             {
                 if (session.CurrentSnapshot.TryGetEntity(entityId, out global::GraphQLDemo.Client.State.CourseTypeEntity? entity))
                 {
-                    session.SetEntity(entityId, new global::GraphQLDemo.Client.State.CourseTypeEntity(DeserializeNonNullableGuid(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), UpdateNonNullableIGetCourseById_CourseById_InstructorEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "instructor"), entityIds), UpdateIGetCourseById_CourseById_StudentsEntityArray(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "students"), entityIds)));
+                    session.SetEntity(entityId, new global::GraphQLDemo.Client.State.CourseTypeEntity(DeserializeNonNullableGuid(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), UpdateNonNullableIGetCourseById_CourseById_InstructorEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "instructor"), entityIds), UpdateIGetCourseById_CourseById_StudentsEntityArray(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "students"), entityIds), entity.Subject));
                 }
                 else
                 {
-                    session.SetEntity(entityId, new global::GraphQLDemo.Client.State.CourseTypeEntity(DeserializeNonNullableGuid(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), UpdateNonNullableIGetCourseById_CourseById_InstructorEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "instructor"), entityIds), UpdateIGetCourseById_CourseById_StudentsEntityArray(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "students"), entityIds)));
+                    session.SetEntity(entityId, new global::GraphQLDemo.Client.State.CourseTypeEntity(DeserializeNonNullableGuid(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), UpdateNonNullableIGetCourseById_CourseById_InstructorEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "instructor"), entityIds), UpdateIGetCourseById_CourseById_StudentsEntityArray(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "students"), entityIds), default !));
                 }
 
                 return entityId;
@@ -4026,11 +6352,11 @@ namespace GraphQLDemo.Client.State
             {
                 if (session.CurrentSnapshot.TryGetEntity(entityId, out global::GraphQLDemo.Client.State.InstructorTypeEntity? entity))
                 {
-                    session.SetEntity(entityId, new global::GraphQLDemo.Client.State.InstructorTypeEntity(DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "firstName"))));
+                    session.SetEntity(entityId, new global::GraphQLDemo.Client.State.InstructorTypeEntity(DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "firstName")), entity.Id, entity.LastName, entity.Salary));
                 }
                 else
                 {
-                    session.SetEntity(entityId, new global::GraphQLDemo.Client.State.InstructorTypeEntity(DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "firstName"))));
+                    session.SetEntity(entityId, new global::GraphQLDemo.Client.State.InstructorTypeEntity(DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "firstName")), default !, default !, default !));
                 }
 
                 return entityId;
@@ -4088,15 +6414,25 @@ namespace GraphQLDemo.Client.State
         private readonly global::StrawberryShake.IEntityStore _entityStore;
         private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
         private readonly global::StrawberryShake.IOperationResultDataFactory<global::GraphQLDemo.Client.IGetCoursesResult> _resultDataFactory;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::GraphQLDemo.Client.Subject> _subjectParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::GraphQLDemo.Client.SortEnumType> _sortEnumTypeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int32, global::System.Int32> _intParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.Guid> _uuidParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Boolean, global::System.Boolean> _booleanParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Double, global::System.Double> _floatParser;
         public GetCoursesBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::GraphQLDemo.Client.IGetCoursesResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
         {
             _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
             _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
             _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
+            _subjectParser = serializerResolver.GetLeafValueParser<global::System.String, global::GraphQLDemo.Client.Subject>("Subject") ?? throw new global::System.ArgumentException("No serializer for type `Subject` found.");
+            _sortEnumTypeParser = serializerResolver.GetLeafValueParser<global::System.String, global::GraphQLDemo.Client.SortEnumType>("SortEnumType") ?? throw new global::System.ArgumentException("No serializer for type `SortEnumType` found.");
+            _intParser = serializerResolver.GetLeafValueParser<global::System.Int32, global::System.Int32>("Int") ?? throw new global::System.ArgumentException("No serializer for type `Int` found.");
             _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
             _uuidParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.Guid>("Uuid") ?? throw new global::System.ArgumentException("No serializer for type `Uuid` found.");
+            _booleanParser = serializerResolver.GetLeafValueParser<global::System.Boolean, global::System.Boolean>("Boolean") ?? throw new global::System.ArgumentException("No serializer for type `Boolean` found.");
+            _floatParser = serializerResolver.GetLeafValueParser<global::System.Double, global::System.Double>("Float") ?? throw new global::System.ArgumentException("No serializer for type `Float` found.");
         }
 
         public global::StrawberryShake.IOperationResult<IGetCoursesResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
@@ -4137,17 +6473,33 @@ namespace GraphQLDemo.Client.State
         {
             var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
             global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
-            global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId?>? coursesId = default !;
+            global::GraphQLDemo.Client.State.CourseTypeConnectionData? coursesId = default !;
             _entityStore.Update(session =>
             {
-                coursesId = UpdateIGetCourses_CoursesEntityArray(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "courses"), entityIds);
+                coursesId = DeserializeIGetCourses_Courses(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "courses"), entityIds);
                 snapshot = session.CurrentSnapshot;
             });
             var resultInfo = new GetCoursesResultInfo(coursesId, entityIds, snapshot.Version);
             return (_resultDataFactory.Create(resultInfo), resultInfo);
         }
 
-        private global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId?>? UpdateIGetCourses_CoursesEntityArray(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
+        private global::GraphQLDemo.Client.State.CourseTypeConnectionData? DeserializeIGetCourses_Courses(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("CourseTypeConnection", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::GraphQLDemo.Client.State.CourseTypeConnectionData(typename, nodes: UpdateIGetCourses_Courses_NodesEntityArray(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "nodes"), entityIds), pageInfo: DeserializeNonNullableIGetCourses_Courses_PageInfo(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "pageInfo")), totalCount: DeserializeNonNullableInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "totalCount")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId?>? UpdateIGetCourses_Courses_NodesEntityArray(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
         {
             if (!obj.HasValue)
             {
@@ -4157,13 +6509,13 @@ namespace GraphQLDemo.Client.State
             var courseTypes = new global::System.Collections.Generic.List<global::StrawberryShake.EntityId?>();
             foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
             {
-                courseTypes.Add(UpdateIGetCourses_CoursesEntity(session, child, entityIds));
+                courseTypes.Add(UpdateIGetCourses_Courses_NodesEntity(session, child, entityIds));
             }
 
             return courseTypes;
         }
 
-        private global::StrawberryShake.EntityId? UpdateIGetCourses_CoursesEntity(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
+        private global::StrawberryShake.EntityId? UpdateIGetCourses_Courses_NodesEntity(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
         {
             if (!obj.HasValue)
             {
@@ -4176,89 +6528,11 @@ namespace GraphQLDemo.Client.State
             {
                 if (session.CurrentSnapshot.TryGetEntity(entityId, out global::GraphQLDemo.Client.State.CourseTypeEntity? entity))
                 {
-                    session.SetEntity(entityId, new global::GraphQLDemo.Client.State.CourseTypeEntity(entity.Id, DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), UpdateNonNullableIGetCourses_Courses_InstructorEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "instructor"), entityIds), UpdateIGetCourses_Courses_StudentsEntityArray(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "students"), entityIds)));
+                    session.SetEntity(entityId, new global::GraphQLDemo.Client.State.CourseTypeEntity(DeserializeNonNullableGuid(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), UpdateNonNullableIGetCourses_Courses_Nodes_InstructorEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "instructor"), entityIds), entity.Students, DeserializeNonNullableSubject(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "subject"))));
                 }
                 else
                 {
-                    session.SetEntity(entityId, new global::GraphQLDemo.Client.State.CourseTypeEntity(default !, DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), UpdateNonNullableIGetCourses_Courses_InstructorEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "instructor"), entityIds), UpdateIGetCourses_Courses_StudentsEntityArray(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "students"), entityIds)));
-                }
-
-                return entityId;
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-
-        private global::System.String? DeserializeString(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                return null;
-            }
-
-            return _stringParser.Parse(obj.Value.GetString()!);
-        }
-
-        private global::StrawberryShake.EntityId UpdateNonNullableIGetCourses_Courses_InstructorEntity(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            global::StrawberryShake.EntityId entityId = _idSerializer.Parse(obj.Value);
-            entityIds.Add(entityId);
-            if (entityId.Name.Equals("InstructorType", global::System.StringComparison.Ordinal))
-            {
-                if (session.CurrentSnapshot.TryGetEntity(entityId, out global::GraphQLDemo.Client.State.InstructorTypeEntity? entity))
-                {
-                    session.SetEntity(entityId, new global::GraphQLDemo.Client.State.InstructorTypeEntity(DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "firstName"))));
-                }
-                else
-                {
-                    session.SetEntity(entityId, new global::GraphQLDemo.Client.State.InstructorTypeEntity(DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "firstName"))));
-                }
-
-                return entityId;
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-
-        private global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId?>? UpdateIGetCourses_Courses_StudentsEntityArray(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
-        {
-            if (!obj.HasValue)
-            {
-                return null;
-            }
-
-            var studentTypes = new global::System.Collections.Generic.List<global::StrawberryShake.EntityId?>();
-            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
-            {
-                studentTypes.Add(UpdateIGetCourses_Courses_StudentsEntity(session, child, entityIds));
-            }
-
-            return studentTypes;
-        }
-
-        private global::StrawberryShake.EntityId? UpdateIGetCourses_Courses_StudentsEntity(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
-        {
-            if (!obj.HasValue)
-            {
-                return null;
-            }
-
-            global::StrawberryShake.EntityId entityId = _idSerializer.Parse(obj.Value);
-            entityIds.Add(entityId);
-            if (entityId.Name.Equals("StudentType", global::System.StringComparison.Ordinal))
-            {
-                if (session.CurrentSnapshot.TryGetEntity(entityId, out global::GraphQLDemo.Client.State.StudentTypeEntity? entity))
-                {
-                    session.SetEntity(entityId, new global::GraphQLDemo.Client.State.StudentTypeEntity(DeserializeNonNullableGuid(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id"))));
-                }
-                else
-                {
-                    session.SetEntity(entityId, new global::GraphQLDemo.Client.State.StudentTypeEntity(DeserializeNonNullableGuid(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id"))));
+                    session.SetEntity(entityId, new global::GraphQLDemo.Client.State.CourseTypeEntity(DeserializeNonNullableGuid(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), UpdateNonNullableIGetCourses_Courses_Nodes_InstructorEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "instructor"), entityIds), default !, DeserializeNonNullableSubject(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "subject"))));
                 }
 
                 return entityId;
@@ -4275,6 +6549,98 @@ namespace GraphQLDemo.Client.State
             }
 
             return _uuidParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.String? DeserializeString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _stringParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::GraphQLDemo.Client.Subject DeserializeNonNullableSubject(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _subjectParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::StrawberryShake.EntityId UpdateNonNullableIGetCourses_Courses_Nodes_InstructorEntity(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            global::StrawberryShake.EntityId entityId = _idSerializer.Parse(obj.Value);
+            entityIds.Add(entityId);
+            if (entityId.Name.Equals("InstructorType", global::System.StringComparison.Ordinal))
+            {
+                if (session.CurrentSnapshot.TryGetEntity(entityId, out global::GraphQLDemo.Client.State.InstructorTypeEntity? entity))
+                {
+                    session.SetEntity(entityId, new global::GraphQLDemo.Client.State.InstructorTypeEntity(DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "firstName")), DeserializeNonNullableGuid(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "lastName")), DeserializeNonNullableDouble(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "salary"))));
+                }
+                else
+                {
+                    session.SetEntity(entityId, new global::GraphQLDemo.Client.State.InstructorTypeEntity(DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "firstName")), DeserializeNonNullableGuid(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "lastName")), DeserializeNonNullableDouble(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "salary"))));
+                }
+
+                return entityId;
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Double DeserializeNonNullableDouble(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _floatParser.Parse(obj.Value.GetDouble()!);
+        }
+
+        private global::GraphQLDemo.Client.State.PageInfoData DeserializeNonNullableIGetCourses_Courses_PageInfo(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("PageInfo", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::GraphQLDemo.Client.State.PageInfoData(typename, startCursor: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "startCursor")), endCursor: DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "endCursor")), hasNextPage: DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "hasNextPage")), hasPreviousPage: DeserializeNonNullableBoolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "hasPreviousPage")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.Boolean DeserializeNonNullableBoolean(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _booleanParser.Parse(obj.Value.GetBoolean()!);
+        }
+
+        private global::System.Int32 DeserializeNonNullableInt32(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _intParser.Parse(obj.Value.GetInt32()!);
         }
     }
 
@@ -4598,6 +6964,57 @@ namespace GraphQLDemo.Client.State
         }
     }
 
+    ///<summary>A connection to a list of items.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class CourseTypeConnectionData
+    {
+        public CourseTypeConnectionData(global::System.String __typename, global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId?>? nodes = default !, global::GraphQLDemo.Client.State.PageInfoData? pageInfo = default !, global::System.Int32? totalCount = default !)
+        {
+            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
+            Nodes = nodes;
+            PageInfo = pageInfo;
+            TotalCount = totalCount;
+        }
+
+        public global::System.String __typename { get; }
+
+        ///<summary>A flattened list of the nodes.</summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId?>? Nodes { get; }
+
+        ///<summary>Information to aid in pagination.</summary>
+        public global::GraphQLDemo.Client.State.PageInfoData? PageInfo { get; }
+
+        public global::System.Int32? TotalCount { get; }
+    }
+
+    ///<summary>Information about pagination in a connection.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
+    public partial class PageInfoData
+    {
+        public PageInfoData(global::System.String __typename, global::System.String? startCursor = default !, global::System.String? endCursor = default !, global::System.Boolean? hasNextPage = default !, global::System.Boolean? hasPreviousPage = default !)
+        {
+            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
+            StartCursor = startCursor;
+            EndCursor = endCursor;
+            HasNextPage = hasNextPage;
+            HasPreviousPage = hasPreviousPage;
+        }
+
+        public global::System.String __typename { get; }
+
+        ///<summary>When paginating backwards, the cursor to continue.</summary>
+        public global::System.String? StartCursor { get; }
+
+        ///<summary>When paginating forwards, the cursor to continue.</summary>
+        public global::System.String? EndCursor { get; }
+
+        ///<summary>Indicates whether more edges exist following the set defined by the clients arguments.</summary>
+        public global::System.Boolean? HasNextPage { get; }
+
+        ///<summary>Indicates whether more edges exist prior the set defined by the clients arguments.</summary>
+        public global::System.Boolean? HasPreviousPage { get; }
+    }
+
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
     public partial class GraphQLDemoClientEntityIdFactory : global::StrawberryShake.IEntityIdSerializer
     {
@@ -4746,12 +7163,12 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.CourseTypeEntity, global::GraphQLDemo.Client.GetCourseById_CourseById_CourseType>, global::GraphQLDemo.Client.State.GetCourseById_CourseById_CourseTypeFromCourseTypeEntityMapper>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.InstructorTypeEntity, global::GraphQLDemo.Client.GetCourseById_CourseById_Instructor_InstructorType>, global::GraphQLDemo.Client.State.GetCourseById_CourseById_Instructor_InstructorTypeFromInstructorTypeEntityMapper>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.StudentTypeEntity, global::GraphQLDemo.Client.GetCourseById_CourseById_Students_StudentType>, global::GraphQLDemo.Client.State.GetCourseById_CourseById_Students_StudentTypeFromStudentTypeEntityMapper>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.CourseTypeEntity, global::GraphQLDemo.Client.GetCourses_Courses_CourseType>, global::GraphQLDemo.Client.State.GetCourses_Courses_CourseTypeFromCourseTypeEntityMapper>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.InstructorTypeEntity, global::GraphQLDemo.Client.GetCourses_Courses_Instructor_InstructorType>, global::GraphQLDemo.Client.State.GetCourses_Courses_Instructor_InstructorTypeFromInstructorTypeEntityMapper>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.StudentTypeEntity, global::GraphQLDemo.Client.GetCourses_Courses_Students_StudentType>, global::GraphQLDemo.Client.State.GetCourses_Courses_Students_StudentTypeFromStudentTypeEntityMapper>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.CourseTypeEntity, global::GraphQLDemo.Client.GetCourses_Courses_Nodes_CourseType>, global::GraphQLDemo.Client.State.GetCourses_Courses_Nodes_CourseTypeFromCourseTypeEntityMapper>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.InstructorTypeEntity, global::GraphQLDemo.Client.GetCourses_Courses_Nodes_Instructor_InstructorType>, global::GraphQLDemo.Client.State.GetCourses_Courses_Nodes_Instructor_InstructorTypeFromInstructorTypeEntityMapper>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.CourseResultEntity, global::GraphQLDemo.Client.CourseCreated_CourseCreated_CourseResult>, global::GraphQLDemo.Client.State.CourseCreated_CourseCreated_CourseResultFromCourseResultEntityMapper>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::GraphQLDemo.Client.State.CourseResultEntity, global::GraphQLDemo.Client.CourseUpdated_CourseUpdated_CourseResult>, global::GraphQLDemo.Client.State.CourseUpdated_CourseUpdated_CourseResultFromCourseResultEntityMapper>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::GraphQLDemo.Client.SubjectSerializer>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::GraphQLDemo.Client.SortEnumTypeSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.StringSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.BooleanSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.ByteSerializer>(services);
@@ -4768,6 +7185,11 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.ByteArraySerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.TimeSpanSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::GraphQLDemo.Client.CourseTypeInputInputValueFormatter>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::GraphQLDemo.Client.CourseTypeFilterInputInputValueFormatter>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::GraphQLDemo.Client.ComparableGuidOperationFilterInputInputValueFormatter>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::GraphQLDemo.Client.StringOperationFilterInputInputValueFormatter>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::GraphQLDemo.Client.SubjectOperationFilterInputInputValueFormatter>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::GraphQLDemo.Client.CourseTypeSortInputInputValueFormatter>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializerResolver>(services, sp => new global::StrawberryShake.Serialization.SerializerResolver(global::System.Linq.Enumerable.Concat(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(parentServices), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(sp))));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::GraphQLDemo.Client.ICreateCourseResult>, global::GraphQLDemo.Client.State.CreateCourseResultFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::GraphQLDemo.Client.ICreateCourseResult>>(sp));

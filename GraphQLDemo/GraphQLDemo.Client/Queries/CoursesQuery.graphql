@@ -1,11 +1,29 @@
-﻿query GetCourses {
-    courses {
-        name
-        instructor {
-            firstName
-        }
-        students {
-            id
-        }
+﻿query GetCourses($first: Int, $after: String, $last: Int, $before: String, $where: CourseTypeFilterInput, $order: [CourseTypeSortInput!]) {
+  courses (
+    first: $first
+    last: $last
+    before: $before
+    after: $after
+    order: $order
+    where: $where
+  ) {
+    nodes {
+      id
+      name
+      subject
+      instructor {
+        id
+        firstName
+        lastName
+        salary
+      }
     }
+    pageInfo {
+      startCursor
+      endCursor
+      hasNextPage
+      hasPreviousPage
+    }
+    totalCount
+  }
 }

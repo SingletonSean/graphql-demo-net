@@ -4,10 +4,16 @@
   subscription: Subscription
 }
 
+enum ApplyPolicy {
+  BEFORE_RESOLVER
+  AFTER_RESOLVER
+}
+
 type Query {
-  courses: [CourseType]
-  courseById(id: Uuid!): CourseType
+  search(term: String): [SearchResult]
   instructions: String @deprecated(reason: "This query is deprecated.")
+  courses(first: Int after: String last: Int before: String where: CourseTypeFilterInput order: [CourseTypeSortInput!]): CourseTypeConnection
+  courseById(id: Uuid!): CourseType
 }
 
 type Mutation {
@@ -21,34 +27,15 @@ type Subscription {
   courseUpdated(courseId: Uuid!): CourseResult
 }
 
-type CourseResult {
-  id: Uuid!
-  name: String
-  subject: Subject!
-  instructorId: Uuid!
-}
-
-scalar Uuid
-
 type CourseType {
-  id: Uuid!
-  name: String
-  subject: Subject!
   instructor: InstructorType!
-  students: [StudentType]
-}
-
-input CourseTypeInput {
+  creator: UserType
+  id: Uuid!
   name: String
   subject: Subject!
   instructorId: Uuid!
-}
-
-type StudentType {
-  id: Uuid!
-  firstName: String
-  lastName: String
-  gpa: Float!
+  students: [StudentType]
+  creatorId: String
 }
 
 type InstructorType {
@@ -58,8 +45,129 @@ type InstructorType {
   salary: Float!
 }
 
+input CourseTypeFilterInput {
+  and: [CourseTypeFilterInput!]
+  or: [CourseTypeFilterInput!]
+  id: ComparableGuidOperationFilterInput
+  name: StringOperationFilterInput
+  subject: SubjectOperationFilterInput
+  instructorId: ComparableGuidOperationFilterInput
+  creatorId: StringOperationFilterInput
+}
+
+input CourseTypeSortInput {
+  name: SortEnumType
+  subject: SortEnumType
+  creatorId: SortEnumType
+}
+
+"A connection to a list of items."
+type CourseTypeConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo!
+  "A list of edges."
+  edges: [CourseTypeEdge!]
+  "A flattened list of the nodes."
+  nodes: [CourseType]
+  totalCount: Int!
+}
+
+input ComparableGuidOperationFilterInput {
+  eq: Uuid
+  neq: Uuid
+  in: [Uuid!]
+  nin: [Uuid!]
+  gt: Uuid
+  ngt: Uuid
+  gte: Uuid
+  ngte: Uuid
+  lt: Uuid
+  nlt: Uuid
+  lte: Uuid
+  nlte: Uuid
+}
+
+input StringOperationFilterInput {
+  and: [StringOperationFilterInput!]
+  or: [StringOperationFilterInput!]
+  eq: String
+  neq: String
+  contains: String
+  ncontains: String
+  in: [String]
+  nin: [String]
+  startsWith: String
+  nstartsWith: String
+  endsWith: String
+  nendsWith: String
+}
+
+input SubjectOperationFilterInput {
+  eq: Subject
+  neq: Subject
+  in: [Subject!]
+  nin: [Subject!]
+}
+
+enum SortEnumType {
+  ASC
+  DESC
+}
+
+"Information about pagination in a connection."
+type PageInfo {
+  "Indicates whether more edges exist following the set defined by the clients arguments."
+  hasNextPage: Boolean!
+  "Indicates whether more edges exist prior the set defined by the clients arguments."
+  hasPreviousPage: Boolean!
+  "When paginating backwards, the cursor to continue."
+  startCursor: String
+  "When paginating forwards, the cursor to continue."
+  endCursor: String
+}
+
+"An edge in a connection."
+type CourseTypeEdge {
+  "A cursor for use in pagination."
+  cursor: String!
+  "The item at the end of the edge."
+  node: CourseType
+}
+
+scalar Uuid
+
+type UserType {
+  id: String
+  username: String
+  photoUrl: String
+}
+
+input CourseTypeInput {
+  name: String
+  subject: Subject!
+  instructorId: Uuid!
+}
+
+type CourseResult {
+  id: Uuid!
+  name: String
+  subject: Subject!
+  instructorId: Uuid!
+}
+
+union SearchResult = CourseType | InstructorType
+
 enum Subject {
   MATHEMATICS
   SCIENCE
   HISTORY
 }
+
+type StudentType {
+  id: Uuid!
+  firstName: String
+  lastName: String
+  gpa: Float!
+}
+
+directive @authorize("The name of the authorization policy that determines access to the annotated resource." policy: String "Roles that are allowed to access the annotated resource." roles: [String!] "Defines when when the resolver shall be executed.By default the resolver is executed after the policy has determined that the current user is allowed to access the field." apply: ApplyPolicy! = BEFORE_RESOLVER) repeatable on SCHEMA | OBJECT | FIELD_DEFINITION
