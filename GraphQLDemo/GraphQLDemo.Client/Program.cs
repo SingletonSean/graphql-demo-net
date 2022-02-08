@@ -1,10 +1,13 @@
-﻿using GraphQLDemo.Client.Scripts;
+﻿using Firebase.Auth;
+using GraphQLDemo.Client.Scripts;
+using GraphQLDemo.Client.Stores;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using StrawberryShake;
 using System;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -24,12 +27,24 @@ namespace GraphQLDemo.Client
 
                     services
                         .AddGraphQLDemoClient()
-                        .ConfigureHttpClient(c => c.BaseAddress = new Uri(httpGraphQLApiUrl))
+                        .ConfigureHttpClient((services, c) => {
+                            c.BaseAddress = new Uri(httpGraphQLApiUrl);
+
+                            TokenStore tokenStore = services.GetRequiredService<TokenStore>();
+                            c.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenStore.AccessToken);
+                        })
                         .ConfigureWebSocketClient(c => c.Uri = new Uri(webSocketsGraphQLApiUrl));
 
                     services.AddHostedService<Startup>();
 
+                    services.AddSingleton<TokenStore>();
+
+                    string firebaseApiKey = context.Configuration.GetValue<string>("FIREBASE_API_KEY");
+                    services.AddSingleton(new FirebaseAuthProvider(new FirebaseConfig(firebaseApiKey)));
+
                     services.AddTransient<GetCoursesScript>();
+                    services.AddTransient<CreateCourseScript>();
+                    services.AddTransient<LoginScript>();
                 })
                 .Build()
                 .Run();
@@ -38,16 +53,19 @@ namespace GraphQLDemo.Client
 
     public class Startup : IHostedService
     {
-        private readonly GetCoursesScript _getCoursesScript;
+        private readonly CreateCourseScript _createCourseScript;
+        private readonly LoginScript _loginScript;
 
-        public Startup(GetCoursesScript getCoursesScript)
+        public Startup(CreateCourseScript createCourseScript, LoginScript loginScript)
         {
-            _getCoursesScript = getCoursesScript;
+            _createCourseScript = createCourseScript;
+            _loginScript = loginScript;
         }
 
         public async Task StartAsync(CancellationToken cancellationToken)
         {
-            await _getCoursesScript.Run();
+            await _loginScript.Run();
+            await _createCourseScript.Run();
         }
 
         public Task StopAsync(CancellationToken cancellationToken)
