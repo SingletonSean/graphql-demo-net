@@ -1,7 +1,6 @@
 ﻿using GraphQLDemo.API.DTOs;
 using GraphQLDemo.API.Services.Instructors;
 using GreenDonut;
-using HotChocolate.DataLoader;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +16,7 @@ namespace GraphQLDemo.API.DataLoaders
         public InstructorDataLoader(
             InstructorsRepository instructorsRepository,
             IBatchScheduler batchScheduler,
-            DataLoaderOptions<Guid> options = null)
+            DataLoaderOptions options = null)
             : base(batchScheduler, options)
         {
             _instructorsRepository = instructorsRepository;

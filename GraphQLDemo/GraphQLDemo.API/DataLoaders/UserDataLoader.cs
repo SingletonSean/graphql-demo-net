@@ -2,7 +2,6 @@
 using FirebaseAdmin.Auth;
 using GraphQLDemo.API.Schema.Queries;
 using GreenDonut;
-using HotChocolate.DataLoader;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +19,7 @@ namespace GraphQLDemo.API.DataLoaders
         public UserDataLoader(
             FirebaseApp firebaseApp,
             IBatchScheduler batchScheduler) 
-            : base(batchScheduler, new DataLoaderOptions<string>()
+            : base(batchScheduler, new DataLoaderOptions()
             {
                 MaxBatchSize = MAX_FIREBASE_USERS_BATCH_SIZE
             })
