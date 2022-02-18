@@ -11,10 +11,10 @@ namespace GraphQLDemo.API.Migrations
                 name: "Instructors",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    FirstName = table.Column<string>(type: "TEXT", nullable: true),
-                    LastName = table.Column<string>(type: "TEXT", nullable: true),
-                    Salary = table.Column<double>(type: "REAL", nullable: false)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Salary = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -25,10 +25,10 @@ namespace GraphQLDemo.API.Migrations
                 name: "Students",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    FirstName = table.Column<string>(type: "TEXT", nullable: true),
-                    LastName = table.Column<string>(type: "TEXT", nullable: true),
-                    GPA = table.Column<double>(type: "REAL", nullable: false)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    GPA = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -39,10 +39,11 @@ namespace GraphQLDemo.API.Migrations
                 name: "Courses",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", nullable: true),
-                    Subject = table.Column<int>(type: "INTEGER", nullable: false),
-                    InstructorId = table.Column<Guid>(type: "TEXT", nullable: false)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Subject = table.Column<int>(type: "int", nullable: false),
+                    CreatorId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    InstructorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -59,8 +60,8 @@ namespace GraphQLDemo.API.Migrations
                 name: "CourseDTOStudentDTO",
                 columns: table => new
                 {
-                    CoursesId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    StudentsId = table.Column<Guid>(type: "TEXT", nullable: false)
+                    CoursesId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    StudentsId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -4,6 +4,7 @@ using FirebaseAdmin.Auth;
 using FirebaseAdminAuthentication.DependencyInjection.Extensions;
 using FirebaseAdminAuthentication.DependencyInjection.Models;
 using FluentValidation.AspNetCore;
+using Google.Apis.Auth.OAuth2;
 using GraphQLDemo.API.DataLoaders;
 using GraphQLDemo.API.Schema;
 using GraphQLDemo.API.Schema.Mutations;
@@ -57,7 +58,10 @@ namespace GraphQLDemo.API
                     o.UseDefaultErrorMapper();
                 });
             
-            services.AddSingleton(FirebaseApp.Create());
+            services.AddSingleton(FirebaseApp.Create(new AppOptions()
+            {
+                Credential = GoogleCredential.FromFile(_configuration.GetValue<string>("FIREBASE_CONFIG_PATH"))
+            }));
             services.AddFirebaseAuthentication();
             services.AddAuthorization(
                 o => o.AddPolicy("IsAdmin",
@@ -66,7 +70,7 @@ namespace GraphQLDemo.API
             services.AddInMemorySubscriptions();
 
             string connectionString = _configuration.GetConnectionString("default");
-            services.AddPooledDbContextFactory<SchoolDbContext>(o => o.UseSqlite(connectionString).LogTo(Console.WriteLine));
+            services.AddPooledDbContextFactory<SchoolDbContext>(o => o.UseSqlServer(connectionString).LogTo(Console.WriteLine));
 
             services.AddScoped<CoursesRepository>();
             services.AddScoped<InstructorsRepository>();
