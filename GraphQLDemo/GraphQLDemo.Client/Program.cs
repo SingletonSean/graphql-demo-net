@@ -45,6 +45,7 @@ namespace GraphQLDemo.Client
                     services.AddTransient<GetCoursesScript>();
                     services.AddTransient<CreateCourseScript>();
                     services.AddTransient<LoginScript>();
+                    services.AddTransient<SearchScript>();
                 })
                 .Build()
                 .Run();
@@ -53,19 +54,16 @@ namespace GraphQLDemo.Client
 
     public class Startup : IHostedService
     {
-        private readonly CreateCourseScript _createCourseScript;
-        private readonly LoginScript _loginScript;
+        private readonly SearchScript _searchScript;
 
-        public Startup(CreateCourseScript createCourseScript, LoginScript loginScript)
+        public Startup(SearchScript searchScript)
         {
-            _createCourseScript = createCourseScript;
-            _loginScript = loginScript;
+            _searchScript = searchScript;
         }
 
         public async Task StartAsync(CancellationToken cancellationToken)
         {
-            await _loginScript.Run();
-            await _createCourseScript.Run();
+            await _searchScript.Run();
         }
 
         public Task StopAsync(CancellationToken cancellationToken)

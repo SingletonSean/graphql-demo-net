@@ -1,0 +1,15 @@
+﻿query Search($term: String!){
+  search(term: $term) {
+    __typename
+    ... on CourseType {
+      id
+      name
+      subject
+    }
+    ... on InstructorType {
+      id
+      firstName
+      lastName
+    }
+  }
+}

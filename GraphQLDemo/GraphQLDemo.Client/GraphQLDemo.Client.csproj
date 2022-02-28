@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -7,10 +7,12 @@
 
   <ItemGroup>
     <GraphQL Remove="GetCourseById.graphql" />
+    <GraphQL Remove="Queries\SearchQuery.graphql" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Queries\CourseByIdQuery.graphql" />
+    <None Remove="Queries\SearchQuery.graphql" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,6 +34,10 @@
   <ItemGroup>
     <Folder Include="Mutations\" />
     <Folder Include="Subscriptions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <GraphQLConfig Include="Queries\SearchQuery.graphql" />
   </ItemGroup>
 
 </Project>
