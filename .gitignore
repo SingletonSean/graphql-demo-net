@@ -3,3 +3,4 @@ obj
 .vs
 *.db
 firebase-config.json
+appsettings.Production.json

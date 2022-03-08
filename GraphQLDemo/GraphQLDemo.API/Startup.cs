@@ -60,7 +60,7 @@ namespace GraphQLDemo.API
             
             services.AddSingleton(FirebaseApp.Create(new AppOptions()
             {
-                Credential = GoogleCredential.FromFile(_configuration.GetValue<string>("FIREBASE_CONFIG_PATH"))
+                Credential = GoogleCredential.FromJson(_configuration.GetValue<string>("FIREBASE_CONFIG"))
             }));
             services.AddFirebaseAuthentication();
             services.AddAuthorization(
