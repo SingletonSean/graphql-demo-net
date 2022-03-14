@@ -16,13 +16,6 @@ namespace GraphQLDemo.API.Schema.Queries
     [ExtendObjectType(typeof(Query))]
     public class CourseQuery
     {
-        private readonly CoursesRepository _coursesRepository;
-
-        public CourseQuery(CoursesRepository coursesRepository)
-        {
-            _coursesRepository = coursesRepository;
-        }
-
         [UseDbContext(typeof(SchoolDbContext))]
         [UsePaging(IncludeTotalCount = true, DefaultPageSize = 10)]
         [UseProjection]
@@ -40,9 +33,15 @@ namespace GraphQLDemo.API.Schema.Queries
             });
         }
 
-        public async Task<CourseType> GetCourseByIdAsync(Guid id)
+        [UseDbContext(typeof(SchoolDbContext))]
+        public async Task<CourseType> GetCourseByIdAsync(Guid id, [ScopedService] SchoolDbContext context)
         {
-            CourseDTO courseDTO = await _coursesRepository.GetById(id);
+            CourseDTO courseDTO = await context.Courses.FindAsync(id);
+
+            if(courseDTO == null)
+            {
+                return null;
+            }
 
             return new CourseType()
             {

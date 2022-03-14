@@ -41,6 +41,7 @@ namespace GraphQLDemo.API
         {
             services.AddFluentValidation();
             services.AddTransient<CourseTypeInputValidator>();
+            services.AddTransient<InstructorTypeInputValidator>();
 
             services.AddGraphQLServer()
                 .AddQueryType<Query>()
@@ -49,6 +50,9 @@ namespace GraphQLDemo.API
                 .AddType<CourseType>()
                 .AddType<InstructorType>()
                 .AddTypeExtension<CourseQuery>()
+                .AddTypeExtension<InstructorQuery>()
+                .AddTypeExtension<CourseMutation>()
+                .AddTypeExtension<InstructorMutation>()
                 .AddFiltering()
                 .AddSorting()
                 .AddProjections()

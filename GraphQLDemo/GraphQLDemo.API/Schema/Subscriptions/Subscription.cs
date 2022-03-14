@@ -16,6 +16,9 @@ namespace GraphQLDemo.API.Schema.Subscriptions
         [Subscribe]
         public CourseResult CourseCreated([EventMessage] CourseResult course) => course;
 
+        [Subscribe]
+        public InstructorResult InstructorCreated([EventMessage] InstructorResult instructor) => instructor;
+
         [SubscribeAndResolve]
         public ValueTask<ISourceStream<CourseResult>> CourseUpdated(Guid courseId, [Service] ITopicEventReceiver topicEventReceiver)
         {
