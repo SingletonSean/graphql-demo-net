@@ -1,12 +1,10 @@
 using AppAny.HotChocolate.FluentValidation;
 using FirebaseAdmin;
-using FirebaseAdmin.Auth;
 using FirebaseAdminAuthentication.DependencyInjection.Extensions;
 using FirebaseAdminAuthentication.DependencyInjection.Models;
 using FluentValidation.AspNetCore;
 using Google.Apis.Auth.OAuth2;
 using GraphQLDemo.API.DataLoaders;
-using GraphQLDemo.API.Schema;
 using GraphQLDemo.API.Schema.Mutations;
 using GraphQLDemo.API.Schema.Queries;
 using GraphQLDemo.API.Schema.Subscriptions;
@@ -16,15 +14,11 @@ using GraphQLDemo.API.Services.Instructors;
 using GraphQLDemo.API.Validators;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace GraphQLDemo.API
 {

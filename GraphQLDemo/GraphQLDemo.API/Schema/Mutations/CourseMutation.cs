@@ -1,10 +1,7 @@
 ﻿using AppAny.HotChocolate.FluentValidation;
-using FirebaseAdminAuthentication.DependencyInjection.Models;
-using FluentValidation.Results;
 using GraphQLDemo.API.DTOs;
 using GraphQLDemo.API.Middlewares.UseUser;
 using GraphQLDemo.API.Models;
-using GraphQLDemo.API.Schema.Queries;
 using GraphQLDemo.API.Schema.Subscriptions;
 using GraphQLDemo.API.Services.Courses;
 using GraphQLDemo.API.Validators;
@@ -13,9 +10,6 @@ using HotChocolate.AspNetCore.Authorization;
 using HotChocolate.Subscriptions;
 using HotChocolate.Types;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace GraphQLDemo.API.Schema.Mutations

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace GraphQLDemo.API.Models
+﻿namespace GraphQLDemo.API.Models
 {
     public class User
     {
