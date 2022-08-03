@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GraphQLDemo.API.Schema.Mutations
+﻿namespace GraphQLDemo.API.Schema.Mutations
 {
     public class InstructorTypeInput
     {

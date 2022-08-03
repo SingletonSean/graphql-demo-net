@@ -1,13 +1,10 @@
-﻿using FirebaseAdmin.Auth;
-using GraphQLDemo.API.DataLoaders;
+﻿using GraphQLDemo.API.DataLoaders;
 using GraphQLDemo.API.DTOs;
 using GraphQLDemo.API.Models;
-using GraphQLDemo.API.Services.Instructors;
 using HotChocolate;
 using HotChocolate.Data;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 

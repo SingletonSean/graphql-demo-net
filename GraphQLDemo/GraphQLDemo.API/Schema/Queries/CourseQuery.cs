@@ -2,12 +2,10 @@
 using GraphQLDemo.API.Schema.Filters;
 using GraphQLDemo.API.Schema.Sorters;
 using GraphQLDemo.API.Services;
-using GraphQLDemo.API.Services.Courses;
 using HotChocolate;
 using HotChocolate.Data;
 using HotChocolate.Types;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 

@@ -2,7 +2,8 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>10</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,11 +18,11 @@
 
   <ItemGroup>
     <PackageReference Include="FirebaseAuthentication.net" Version="3.7.2" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
-    <PackageReference Include="StrawberryShake.CodeGeneration.CSharp.Analyzers" Version="11.3.2" />
-    <PackageReference Include="StrawberryShake.Transport.Http" Version="11.3.2" />
-    <PackageReference Include="StrawberryShake.Transport.WebSockets" Version="11.3.6" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+    <PackageReference Include="StrawberryShake.CodeGeneration.CSharp.Analyzers" Version="12.12.1" />
+    <PackageReference Include="StrawberryShake.Transport.Http" Version="12.12.1" />
+    <PackageReference Include="StrawberryShake.Transport.WebSockets" Version="12.12.1" />
     <PackageReference Include="System.Reactive" Version="5.0.0" />
   </ItemGroup>
 
@@ -32,6 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Generated" />
     <Folder Include="Mutations\" />
     <Folder Include="Subscriptions\" />
   </ItemGroup>
